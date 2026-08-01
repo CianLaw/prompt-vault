@@ -7,15 +7,26 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     background: #0d1117; color: #c9d1d9; min-height: 100vh;
 }
 header {
     background: #161b22; border-bottom: 1px solid #30363d;
-    padding: 24px 32px; text-align: center;
+    padding: 20px 32px; text-align: center; position: relative;
 }
-header h1 { font-size: 28px; font-weight: 600; color: #58a6ff; margin-bottom: 4px; }
-header p { color: #8b949e; font-size: 14px; }
+header h1 { font-size: 26px; font-weight: 600; color: #58a6ff; margin-bottom: 4px; }
+header p { color: #8b949e; font-size: 13px; }
+.lang-switch {
+    position: absolute; top: 50%; right: 24px; transform: translateY(-50%);
+    display: flex; gap: 4px; background: #21262d; border-radius: 6px; padding: 3px;
+    border: 1px solid #30363d;
+}
+.lang-switch button {
+    background: none; border: none; color: #8b949e; cursor: pointer;
+    font-size: 12px; padding: 4px 12px; border-radius: 4px;
+    transition: all 0.2s; font-family: inherit;
+}
+.lang-switch button.active { background: #1f6feb; color: #fff; }
 
 .search-wrap {
     max-width: 720px; margin: 24px auto; padding: 0 16px;
@@ -30,7 +41,7 @@ header p { color: #8b949e; font-size: 14px; }
 .search-wrap select { cursor: pointer; appearance: none; }
 
 .filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-.filters select { flex: 1; min-width: 140px; margin-bottom: 0; }
+.filters select { flex: 1; min-width: 130px; margin-bottom: 0; }
 
 .tag-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .tag-filter .tag {
@@ -97,6 +108,7 @@ footer a { color: #58a6ff; text-decoration: none; }
 
 @media (max-width: 600px) {
     header { padding: 16px; }
+    .lang-switch { position: static; transform: none; justify-content: center; margin-top: 10px; }
     .filters { flex-direction: column; }
     .card-header { flex-direction: column; }
 }
@@ -107,61 +119,104 @@ footer a { color: #58a6ff; text-decoration: none; }
 <header>
     <h1>PromptVault</h1>
     <p id="stats-line">Loading...</p>
+    <div class="lang-switch">
+        <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
 </header>
 
 <div class="search-wrap">
-    <input type="text" id="search" placeholder="Search prompts by keyword, title, tag... (e.g. 'writing', 'GPT-4', 'marketing')" oninput="filter()">
+    <input type="text" id="search" oninput="filter()">
     <div class="filters">
         <select id="cat-filter" onchange="filter()">
-            <option value="all">All Categories</option>
+            <option value="all">--</option>
         </select>
         <select id="diff-filter" onchange="filter()">
-            <option value="all">All Difficulty</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
+            <option value="all">--</option>
         </select>
         <select id="model-filter" onchange="filter()">
-            <option value="all">All Models</option>
-            <option value="chatgpt">ChatGPT</option>
-            <option value="claude">Claude</option>
-            <option value="gemini">Gemini</option>
-            <option value="deepseek">DeepSeek</option>
-            <option value="grok">Grok</option>
+            <option value="all">--</option>
         </select>
     </div>
     <div class="tag-filter" id="tag-bar"></div>
 </div>
 
 <div class="results">
-    <div class="results-header" id="results-count">Showing all prompts</div>
+    <div class="results-header" id="results-count"></div>
     <div id="card-list"></div>
 </div>
 
 <footer>
-    PromptVault &mdash; <span id="footer-total"></span> structured AI prompts &middot;
-    <a href="https://github.com" target="_blank">GitHub</a>
+    PromptVault &mdash; <span id="footer-total"></span> &middot;
+    <a href="https://github.com/CianLaw/prompt-vault" target="_blank">GitHub</a>
 </footer>
 
 <script>
 let allPrompts = [];
 let allTags = new Set();
+let currentLang = 'zh';
 
-const catNames = {
-    writing:'Writing & Content', coding:'Coding & Development',
-    business:'Business & Finance', creative:'Creative & Design',
-    education:'Education & Learning', productivity:'Productivity & Workflow',
-    marketing:'Marketing & Growth', analysis:'Analysis & Research',
-    roleplay:'Roleplay & Simulation', 'image-gen':'Image Generation',
-    'video-gen':'Video Generation'
+const I18N = {
+    zh: {
+        stats: '条提示词 · 11 个分类 · 中英双语 · JSON 结构化',
+        searchPlaceholder: '输入关键词搜索提示词（如：写作、编程、营销、GPT-4）',
+        catAll: '全部分类',
+        diffAll: '全部难度',
+        diffBeginner: '入门',
+        diffIntermediate: '进阶',
+        diffAdvanced: '高级',
+        modelAll: '全部模型',
+        showing: '共显示 ',
+        of: ' / ',
+        showPrompt: '展开提示词',
+        hidePrompt: '收起提示词',
+        copy: '复制',
+        copied: '已复制',
+        github: 'GitHub',
+    },
+    en: {
+        stats: 'prompts · 11 categories · Bilingual EN/ZH · JSON structured',
+        searchPlaceholder: 'Search by keyword, title, tag... (e.g. writing, marketing)',
+        catAll: 'All Categories',
+        diffAll: 'All Difficulty',
+        diffBeginner: 'Beginner',
+        diffIntermediate: 'Intermediate',
+        diffAdvanced: 'Advanced',
+        modelAll: 'All Models',
+        showing: 'Showing ',
+        of: ' of ',
+        showPrompt: 'Show Prompt',
+        hidePrompt: 'Hide Prompt',
+        copy: 'Copy',
+        copied: 'Copied!',
+        github: 'GitHub',
+    }
 };
 
+const CAT_NAMES = {
+    zh: {
+        'writing':'写作与内容','coding':'编程与开发','business':'商业与金融',
+        'creative':'创意与设计','education':'教育与学习','productivity':'效率与工作流',
+        'marketing':'营销与增长','analysis':'分析与研究','roleplay':'角色扮演与模拟',
+        'image-gen':'图像生成','video-gen':'视频生成'
+    },
+    en: {
+        'writing':'Writing & Content','coding':'Coding & Development',
+        'business':'Business & Finance','creative':'Creative & Design',
+        'education':'Education & Learning','productivity':'Productivity & Workflow',
+        'marketing':'Marketing & Growth','analysis':'Analysis & Research',
+        'roleplay':'Roleplay & Simulation','image-gen':'Image Generation',
+        'video-gen':'Video Generation'
+    }
+};
+
+function t(key) { return I18N[currentLang][key]; }
+
 async function load() {
-    const cats = Object.keys(catNames);
-    const base = 'prompts/';
+    const cats = Object.keys(CAT_NAMES.en);
     for (const cat of cats) {
         try {
-            const r = await fetch(base + cat + '/prompts.json');
+            const r = await fetch('prompts/' + cat + '/prompts.json');
             const data = await r.json();
             data.forEach(p => { p.category = cat; allTags.add(...p.tags); });
             allPrompts.push(...data);
@@ -172,26 +227,58 @@ async function load() {
 }
 
 function buildUI() {
-    // Stats
-    document.getElementById('stats-line').textContent = `${allPrompts.length} prompts · 11 categories · Bilingual EN/ZH · JSON structured`;
-    document.getElementById('footer-total').textContent = `${allPrompts.length}+`;
+    setLang('zh');
 
-    // Category filter
     const sel = document.getElementById('cat-filter');
-    for (const [k,v] of Object.entries(catNames)) {
+    for (const [k,v] of Object.entries(CAT_NAMES.en)) {
         const opt = document.createElement('option');
-        opt.value = k; opt.textContent = `${v}`;
+        opt.value = k; opt.dataset.en = v; opt.dataset.zh = CAT_NAMES.zh[k];
         sel.appendChild(opt);
     }
 
-    // Tag bar
     const tagBar = document.getElementById('tag-bar');
-    [...allTags].sort().forEach(t => {
+    [...allTags].sort().forEach(tg => {
         const span = document.createElement('span');
-        span.className = 'tag'; span.textContent = t;
+        span.className = 'tag'; span.textContent = tg;
         span.onclick = () => { span.classList.toggle('active'); filter(); };
         tagBar.appendChild(span);
     });
+
+    filter();
+}
+
+function setLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+    const stats = document.getElementById('stats-line');
+    stats.textContent = `${allPrompts.length} ${t('stats')}`;
+    document.getElementById('footer-total').textContent = `${allPrompts.length}+`;
+
+    document.getElementById('search').placeholder = t('searchPlaceholder');
+
+    const catSel = document.getElementById('cat-filter');
+    if (catSel.options.length > 1) {
+        catSel.options[0].textContent = t('catAll');
+        for (let i = 1; i < catSel.options.length; i++) {
+            catSel.options[i].textContent = lang === 'zh' ? catSel.options[i].dataset.zh : catSel.options[i].dataset.en;
+        }
+    }
+
+    const diffSel = document.getElementById('diff-filter');
+    diffSel.options[0].textContent = t('diffAll');
+    diffSel.options[1].textContent = t('diffBeginner');
+    diffSel.options[2].textContent = t('diffIntermediate');
+    diffSel.options[3].textContent = t('diffAdvanced');
+
+    const modelSel = document.getElementById('model-filter');
+    modelSel.options[0].textContent = t('modelAll');
+
+    document.getElementById('footer').querySelector('a').textContent = t('github');
+
+    filter();
 }
 
 function filter() {
@@ -212,7 +299,7 @@ function filter() {
             p.title_cn.includes(q) ||
             p.description.toLowerCase().includes(q) ||
             p.description_cn.includes(q) ||
-            p.tags.some(t => t.includes(q)) ||
+            p.tags.some(tg => tg.includes(q)) ||
             p.id.includes(q) ||
             p.prompt.toLowerCase().includes(q) ||
             p.prompt_cn.includes(q)
@@ -220,11 +307,11 @@ function filter() {
     }
 
     if (activeTags.length) {
-        filtered = filtered.filter(p => activeTags.every(t => p.tags.includes(t)));
+        filtered = filtered.filter(p => activeTags.every(tg => p.tags.includes(tg)));
     }
 
     document.getElementById('results-count').textContent =
-        `Showing ${filtered.length} of ${allPrompts.length} prompts`;
+        `${t('showing')}${filtered.length}${t('of')}${allPrompts.length}`;
 
     const list = document.getElementById('card-list');
     list.innerHTML = filtered.map(p => `
@@ -236,36 +323,38 @@ function filter() {
                     <span class="card-title-cn">${p.title_cn}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-size:11px;color:#6e7681;">${p.difficulty}</span>
-                    <button class="expand-btn" onclick="togglePrompt(this, '${p.id}')">Show Prompt</button>
+                    <span style="font-size:11px;color:#6e7681;">${currentLang === 'zh' ? ({beginner:'入门',intermediate:'进阶',advanced:'高级'})[p.difficulty] : p.difficulty}</span>
+                    <button class="expand-btn" onclick="togglePrompt(this, '${p.id}')">${t('showPrompt')}</button>
                 </div>
             </div>
-            <div class="card-desc">${p.description}</div>
+            <div class="card-desc">${currentLang === 'zh' ? p.description_cn : p.description}</div>
             <div class="card-meta">
-                ${p.tags.map(t=>`<span>${t}</span>`).join('')}
+                ${p.tags.map(tg=>`<span>${tg}</span>`).join('')}
                 ${p.model_compatibility.map(m=>`<span style="background:#1f6feb22;border-color:#1f6feb44;">${m}</span>`).join('')}
             </div>
             <div class="card-prompt" id="prompt-${p.id}">
                 <span class="lang-tab active" onclick="switchLang(this,'en','${p.id}')">EN</span>
                 <span class="lang-tab" onclick="switchLang(this,'cn','${p.id}')">中文</span>
-                <button class="copy-btn" onclick="copyPrompt('${p.id}','en')">Copy EN</button>
-                <button class="copy-btn" onclick="copyPrompt('${p.id}','cn')">Copy 中文</button>
-                <pre id="text-${p.id}">${escapeHtml(p.prompt)}</pre>
+                <button class="copy-btn" onclick="copyPrompt('${p.id}','en')">${t('copy')} EN</button>
+                <button class="copy-btn" onclick="copyPrompt('${p.id}','cn')">${t('copy')} 中文</button>
+                <pre id="text-${p.id}">${escapeHtml(currentLang === 'zh' ? p.prompt_cn : p.prompt)}</pre>
             </div>
         </div>
     `).join('');
+
+    document.querySelectorAll('.card-prompt').forEach(el => el.classList.remove('show'));
 }
 
 function togglePrompt(btn, id) {
     const el = document.getElementById('prompt-' + id);
     const isOpen = el.classList.contains('show');
     el.classList.toggle('show');
-    btn.textContent = isOpen ? 'Show Prompt' : 'Hide Prompt';
+    btn.textContent = isOpen ? t('showPrompt') : t('hidePrompt');
 }
 
 function switchLang(tab, lang, id) {
     const parent = tab.parentElement;
-    parent.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    parent.querySelectorAll('.lang-tab').forEach(tg => tg.classList.remove('active'));
     tab.classList.add('active');
     const pre = document.getElementById('text-' + id);
     const prompt = allPrompts.find(p => p.id === id);
@@ -276,7 +365,10 @@ function copyPrompt(id, lang) {
     const prompt = allPrompts.find(p => p.id === id);
     const text = lang === 'en' ? prompt.prompt : prompt.prompt_cn;
     navigator.clipboard.writeText(text).then(() => {
-        // Brief flash could be added
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = t('copied');
+        setTimeout(() => btn.textContent = orig, 1200);
     });
 }
 
