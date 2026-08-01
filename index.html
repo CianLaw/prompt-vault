@@ -3,114 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PromptVault - AI Prompt Library</title>
+<title>PromptVault - AI 提示词库</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: #0d1117; color: #c9d1d9; min-height: 100vh;
-}
-header {
-    background: #161b22; border-bottom: 1px solid #30363d;
-    padding: 20px 32px; text-align: center; position: relative;
-}
-header h1 { font-size: 26px; font-weight: 600; color: #58a6ff; margin-bottom: 4px; }
-header p { color: #8b949e; font-size: 13px; }
-.lang-switch {
-    position: absolute; top: 50%; right: 24px; transform: translateY(-50%);
-    display: flex; gap: 4px; background: #21262d; border-radius: 6px; padding: 3px;
-    border: 1px solid #30363d;
-}
-.lang-switch button {
-    background: none; border: none; color: #8b949e; cursor: pointer;
-    font-size: 12px; padding: 4px 12px; border-radius: 4px;
-    transition: all 0.2s; font-family: inherit;
-}
-.lang-switch button.active { background: #1f6feb; color: #fff; }
+:root { --bg: #0d1117; --card-bg: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; --accent-bg: #1f6feb22; --accent-border: #1f6feb44; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-text-size-adjust: 100%; }
+header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 18px 20px; text-align: center; position: relative; }
+header h1 { font-size: 24px; font-weight: 700; color: var(--accent); margin: 0 0 2px; }
+header .sub { color: var(--muted); font-size: 12px; }
 
-.search-wrap {
-    max-width: 720px; margin: 24px auto; padding: 0 16px;
-}
-.search-wrap input, .search-wrap select {
-    width: 100%; padding: 12px 16px;
-    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
-    color: #c9d1d9; font-size: 15px; outline: none; margin-bottom: 12px;
-    transition: border-color 0.2s;
-}
-.search-wrap input:focus, .search-wrap select:focus { border-color: #58a6ff; }
-.search-wrap select { cursor: pointer; appearance: none; }
+.lang-switch { display: flex; justify-content: center; gap: 4px; margin-top: 10px; }
+.lang-switch button { background: #21262d; border: 1px solid var(--border); color: var(--muted); font-size: 12px; padding: 4px 16px; border-radius: 6px; cursor: pointer; font-family: inherit; }
+.lang-switch button.active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); font-weight: 600; }
 
-.filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-.filters select { flex: 1; min-width: 130px; margin-bottom: 0; }
+.container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
 
-.tag-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tag-filter .tag {
-    padding: 4px 12px; border-radius: 20px; font-size: 12px;
-    border: 1px solid #30363d; color: #8b949e; cursor: pointer;
-    transition: all 0.2s;
-}
-.tag-filter .tag:hover { border-color: #58a6ff; color: #58a6ff; }
-.tag-filter .tag.active { background: #1f6feb22; border-color: #1f6feb; color: #58a6ff; }
+/* Search */
+.search-box { margin: 16px 0; }
+.search-box input { width: 100%; padding: 12px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 15px; outline: none; transition: border-color .2s; }
+.search-box input:focus { border-color: var(--accent); }
 
-.results { max-width: 960px; margin: 24px auto; padding: 0 16px; }
-.results-header { color: #8b949e; font-size: 13px; margin-bottom: 16px; }
+/* Filters row */
+.filters-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.filter-dropdown { flex: 1; min-width: 110px; position: relative; }
+.filter-btn { width: 100%; padding: 10px 12px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
+.filter-btn::after { content: ''; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--muted); margin-left: 6px; flex-shrink: 0; }
+.filter-btn:focus { outline: none; border-color: var(--accent); }
+.filter-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; z-index: 100; max-height: 220px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.filter-menu.open { display: block; }
+.filter-menu .opt { padding: 10px 14px; font-size: 13px; color: var(--text); cursor: pointer; border-bottom: 1px solid var(--border); }
+.filter-menu .opt:last-child { border-bottom: none; }
+.filter-menu .opt:hover { background: var(--accent-bg); }
+.filter-menu .opt.selected { color: var(--accent); font-weight: 600; }
 
-.card {
-    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
-    padding: 20px; margin-bottom: 12px; transition: border-color 0.2s;
-}
-.card:hover { border-color: #58a6ff; }
-.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
-.card-id { color: #8b949e; font-size: 11px; font-family: monospace; }
-.card-title { font-size: 16px; font-weight: 600; color: #e6edf3; }
-.card-title-cn { font-size: 13px; color: #8b949e; margin-left: 8px; }
-.card-desc { font-size: 13px; color: #8b949e; margin-bottom: 10px; line-height: 1.5; }
-.card-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 11px; color: #6e7681; margin-bottom: 12px; }
-.card-meta span {
-    padding: 2px 8px; border-radius: 4px; background: #21262d; border: 1px solid #30363d;
-}
+/* Tags */
+.tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all .15s; }
+.tag:hover { border-color: var(--accent); color: var(--accent); }
+.tag.active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
 
-.card-prompt { display: none; margin-top: 12px; }
-.card-prompt.show { display: block; }
-.card-prompt pre {
-    background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
-    padding: 14px; font-size: 12px; line-height: 1.6; overflow-x: auto;
-    white-space: pre-wrap; word-break: break-word; color: #c9d1d9;
-}
-.card-prompt .lang-tab {
-    display: inline-block; padding: 4px 10px; border-radius: 4px 4px 0 0;
-    font-size: 11px; cursor: pointer; border: 1px solid #30363d; border-bottom: none;
-    background: #0d1117; color: #8b949e; margin-right: 4px;
-}
-.card-prompt .lang-tab.active { background: #161b22; color: #58a6ff; border-color: #58a6ff #30363d #161b22; }
+/* Results */
+.result-summary { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
 
-.expand-btn {
-    background: none; border: 1px solid #30363d; color: #58a6ff;
-    padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 12px;
-    transition: all 0.2s;
-}
-.expand-btn:hover { background: #1f6feb22; border-color: #58a6ff; }
-.copy-btn {
-    background: none; border: 1px solid #30363d; color: #8b949e;
-    padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
-    margin-left: 8px; transition: all 0.2s;
-}
-.copy-btn:hover { color: #e6edf3; border-color: #58a6ff; }
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; transition: border-color .2s; }
+.card:hover { border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+.card-id { color: var(--muted); font-size: 10px; font-family: monospace; }
+.card-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.card-title-cn { font-size: 13px; color: var(--muted); }
+.card-desc { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 10px; }
+.card-meta span { padding: 2px 8px; border-radius: 4px; background: #21262d; border: 1px solid var(--border); }
+.card-meta span.model-tag { background: var(--accent-bg); border-color: var(--accent-border); }
+.card-meta span.diff-tag { background: #2ea04322; border-color: #2ea04344; color: #3fb950; }
+.expand-btn { background: none; border: 1px solid var(--border); color: var(--accent); padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: inherit; }
+.expand-btn:hover { background: var(--accent-bg); }
 
-.stats { max-width: 960px; margin: 0 auto; padding: 0 16px 32px; text-align: center; }
-.stats span { color: #58a6ff; font-weight: 600; }
+.card-body { display: none; margin-top: 10px; }
+.card-body.show { display: block; }
+.tab-row { display: flex; gap: 4px; margin-bottom: 4px; align-items: center; }
+.lang-tab { padding: 4px 10px; border-radius: 6px 6px 0 0; font-size: 11px; cursor: pointer; border: 1px solid var(--border); border-bottom: none; background: #0d1117; color: var(--muted); }
+.lang-tab.active { background: var(--card-bg); color: var(--accent); border-color: var(--accent) var(--border) var(--card-bg); }
+.copy-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 3px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; margin-left: auto; font-family: inherit; }
+.copy-btn:hover { color: var(--text); border-color: var(--accent); }
+.card-body pre { background: #0d1117; border: 1px solid var(--border); border-radius: 0 6px 6px 6px; padding: 12px; font-size: 11px; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; word-break: break-word; color: var(--text); }
 
-footer {
-    text-align: center; padding: 20px; color: #484f58; font-size: 12px;
-    border-top: 1px solid #30363d;
-}
-footer a { color: #58a6ff; text-decoration: none; }
+footer { text-align: center; padding: 20px; color: #484f58; font-size: 12px; border-top: 1px solid var(--border); margin-top: 24px; }
+footer a { color: var(--accent); text-decoration: none; }
 
-@media (max-width: 600px) {
-    header { padding: 16px; }
-    .lang-switch { position: static; transform: none; justify-content: center; margin-top: 10px; }
-    .filters { flex-direction: column; }
-    .card-header { flex-direction: column; }
+@media (max-width: 500px) {
+    .filters-row { flex-direction: column; gap: 6px; }
+    .filter-dropdown { min-width: 100%; }
+    .card-top { flex-direction: column; }
 }
 </style>
 </head>
@@ -118,262 +82,285 @@ footer a { color: #58a6ff; text-decoration: none; }
 
 <header>
     <h1>PromptVault</h1>
-    <p id="stats-line">Loading...</p>
+    <p class="sub" id="header-stat">加载中...</p>
     <div class="lang-switch">
-        <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
-        <button id="btn-en" onclick="setLang('en')">EN</button>
+        <button id="lzh" class="active" onclick="setLang('zh')">中文</button>
+        <button id="len" onclick="setLang('en')">EN</button>
     </div>
 </header>
 
-<div class="search-wrap">
-    <input type="text" id="search" oninput="filter()">
-    <div class="filters">
-        <select id="cat-filter" onchange="filter()">
-            <option value="all">--</option>
-        </select>
-        <select id="diff-filter" onchange="filter()">
-            <option value="all">--</option>
-        </select>
-        <select id="model-filter" onchange="filter()">
-            <option value="all">--</option>
-        </select>
+<div class="container">
+    <div class="search-box">
+        <input type="text" id="search" oninput="render()">
     </div>
-    <div class="tag-filter" id="tag-bar"></div>
+
+    <div class="filters-row">
+        <div class="filter-dropdown" id="dd-cat"></div>
+        <div class="filter-dropdown" id="dd-diff"></div>
+        <div class="filter-dropdown" id="dd-model"></div>
+    </div>
+
+    <div class="tags-row" id="tags-row"></div>
+    <div class="result-summary" id="summary"></div>
+    <div id="cards"></div>
 </div>
 
-<div class="results">
-    <div class="results-header" id="results-count"></div>
-    <div id="card-list"></div>
-</div>
-
-<footer>
-    PromptVault &mdash; <span id="footer-total"></span> &middot;
-    <a href="https://github.com/CianLaw/prompt-vault" target="_blank">GitHub</a>
-</footer>
+<footer>PromptVault · <span id="footer-text"></span> · <a href="https://github.com/CianLaw/prompt-vault" target="_blank">GitHub</a></footer>
 
 <script>
+// ======= DATA =======
 let allPrompts = [];
+let allModels = new Set();
 let allTags = new Set();
-let currentLang = 'zh';
+let lang = 'zh';
+
+const DIFF_KEYS = ['beginner','intermediate','advanced'];
+const CATS = ['writing','coding','business','creative','education','productivity','marketing','analysis','roleplay','image-gen','video-gen'];
+
+const CAT_LABEL = {
+    writing: {zh:'写作',en:'Writing'}, coding: {zh:'编程',en:'Coding'},
+    business: {zh:'商业',en:'Business'}, creative: {zh:'创意',en:'Creative'},
+    education: {zh:'教育',en:'Education'}, productivity: {zh:'效率',en:'Productivity'},
+    marketing: {zh:'营销',en:'Marketing'}, analysis: {zh:'分析',en:'Analysis'},
+    roleplay: {zh:'角色扮演',en:'Roleplay'}, 'image-gen': {zh:'图像生成',en:'Image Gen'},
+    'video-gen': {zh:'视频生成',en:'Video Gen'}
+};
+const DIFF_LABEL = {
+    beginner: {zh:'入门',en:'Beginner'},
+    intermediate: {zh:'进阶',en:'Intermediate'},
+    advanced: {zh:'高级',en:'Advanced'}
+};
 
 const I18N = {
-    zh: {
-        stats: '条提示词 · 11 个分类 · 中英双语 · JSON 结构化',
-        searchPlaceholder: '输入关键词搜索提示词（如：写作、编程、营销、GPT-4）',
-        catAll: '全部分类',
-        diffAll: '全部难度',
-        diffBeginner: '入门',
-        diffIntermediate: '进阶',
-        diffAdvanced: '高级',
-        modelAll: '全部模型',
-        showing: '共显示 ',
-        of: ' / ',
-        showPrompt: '展开提示词',
-        hidePrompt: '收起提示词',
-        copy: '复制',
-        copied: '已复制',
-        github: 'GitHub',
-    },
-    en: {
-        stats: 'prompts · 11 categories · Bilingual EN/ZH · JSON structured',
-        searchPlaceholder: 'Search by keyword, title, tag... (e.g. writing, marketing)',
-        catAll: 'All Categories',
-        diffAll: 'All Difficulty',
-        diffBeginner: 'Beginner',
-        diffIntermediate: 'Intermediate',
-        diffAdvanced: 'Advanced',
-        modelAll: 'All Models',
-        showing: 'Showing ',
-        of: ' of ',
-        showPrompt: 'Show Prompt',
-        hidePrompt: 'Hide Prompt',
-        copy: 'Copy',
-        copied: 'Copied!',
-        github: 'GitHub',
-    }
+    zh: { search:'搜索提示词（如：写作、营销、GPT-4）', catAll:'全部分类', diffAll:'全部难度', modelAll:'全部模型',
+        show:'展开', hide:'收起', copyEn:'复制 EN', copyCn:'复制 中文', copied:'已复制!',
+        results:'共 {n} 条结果', header:'{n} 条提示词 · 11 分类 · 中英双语'},
+    en: { search:'Search prompts (e.g. writing, marketing, GPT-4)', catAll:'All Categories', diffAll:'All Difficulty', modelAll:'All Models',
+        show:'Show', hide:'Hide', copyEn:'Copy EN', copyCn:'Copy 中文', copied:'Copied!',
+        results:'{n} results', header:'{n} prompts · 11 categories · EN/ZH bilingual'}
 };
+function t(k, vars) { var s = I18N[lang][k] || k; if (vars) for (var v in vars) s = s.replace('{'+v+'}', vars[v]); return s; }
 
-const CAT_NAMES = {
-    zh: {
-        'writing':'写作与内容','coding':'编程与开发','business':'商业与金融',
-        'creative':'创意与设计','education':'教育与学习','productivity':'效率与工作流',
-        'marketing':'营销与增长','analysis':'分析与研究','roleplay':'角色扮演与模拟',
-        'image-gen':'图像生成','video-gen':'视频生成'
-    },
-    en: {
-        'writing':'Writing & Content','coding':'Coding & Development',
-        'business':'Business & Finance','creative':'Creative & Design',
-        'education':'Education & Learning','productivity':'Productivity & Workflow',
-        'marketing':'Marketing & Growth','analysis':'Analysis & Research',
-        'roleplay':'Roleplay & Simulation','image-gen':'Image Generation',
-        'video-gen':'Video Generation'
-    }
-};
-
-function t(key) { return I18N[currentLang][key]; }
-
+// ======= LOAD =======
 async function load() {
-    const cats = Object.keys(CAT_NAMES.en);
-    for (const cat of cats) {
+    for (let cat of CATS) {
         try {
-            const r = await fetch('prompts/' + cat + '/prompts.json');
-            const data = await r.json();
-            data.forEach(p => { p.category = cat; allTags.add(...p.tags); });
+            let r = await fetch('prompts/' + cat + '/prompts.json');
+            let data = await r.json();
+            data.forEach(p => {
+                p.category = cat;
+                p.tags.forEach(tg => allTags.add(tg));
+                p.model_compatibility.forEach(m => allModels.add(m));
+            });
             allPrompts.push(...data);
-        } catch(e) { console.warn('Failed to load', cat, e); }
+        } catch(e) { console.warn('Load fail:', cat); }
     }
     buildUI();
-    filter();
+    setLang('zh');
+    render();
 }
 
+// ======= BUILD UI =======
 function buildUI() {
-    setLang('zh');
+    // Header stat
+    document.getElementById('header-stat').textContent = t('header', {n: allPrompts.length});
+    document.getElementById('footer-text').textContent = allPrompts.length + '+ prompts';
+    document.getElementById('search').placeholder = t('search');
 
-    const sel = document.getElementById('cat-filter');
-    for (const [k,v] of Object.entries(CAT_NAMES.en)) {
-        const opt = document.createElement('option');
-        opt.value = k; opt.dataset.en = v; opt.dataset.zh = CAT_NAMES.zh[k];
-        sel.appendChild(opt);
-    }
+    // Cat dropdown
+    buildDropdown('dd-cat', 'cat', CATS.map(c => ({val:c, label_zh:CAT_LABEL[c].zh, label_en:CAT_LABEL[c].en})));
+    // Diff dropdown
+    buildDropdown('dd-diff', 'diff', DIFF_KEYS.map(d => ({val:d, label_zh:DIFF_LABEL[d].zh, label_en:DIFF_LABEL[d].en})));
+    // Model dropdown
+    buildDropdown('dd-model', 'model', [...allModels].sort().map(m => ({val:m, label_zh:m, label_en:m})));
 
-    const tagBar = document.getElementById('tag-bar');
+    // Tags
+    let tagRow = document.getElementById('tags-row');
+    tagRow.innerHTML = '';
     [...allTags].sort().forEach(tg => {
-        const span = document.createElement('span');
-        span.className = 'tag'; span.textContent = tg;
-        span.onclick = () => { span.classList.toggle('active'); filter(); };
-        tagBar.appendChild(span);
+        let s = document.createElement('span');
+        s.className = 'tag'; s.textContent = tg;
+        s.onclick = function() { this.classList.toggle('active'); render(); };
+        tagRow.appendChild(s);
+    });
+}
+
+function buildDropdown(id, key, items) {
+    let wrap = document.getElementById(id);
+    let allLabel = key === 'cat' ? 'catAll' : (key === 'diff' ? 'diffAll' : 'modelAll');
+    let opts = [{val:'all', label_zh:t.call({lang:'zh'}, allLabel), label_en:t.call({lang:'en'}, allLabel)}, ...items];
+
+    wrap.innerHTML = '';
+    wrap.dataset.key = key;
+
+    let btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = opts[0][lang === 'zh' ? 'label_zh' : 'label_en'];
+    btn.dataset.value = 'all';
+    btn.onclick = function(e) { e.stopPropagation(); toggleMenu(wrap); };
+
+    let menu = document.createElement('div');
+    menu.className = 'filter-menu';
+
+    opts.forEach((o, i) => {
+        let div = document.createElement('div');
+        div.className = 'opt' + (i === 0 ? ' selected' : '');
+        div.textContent = lang === 'zh' ? o.label_zh : o.label_en;
+        div.dataset.value = o.val;
+        div.onclick = function(e) {
+            e.stopPropagation();
+            selectOption(wrap, this, o);
+        };
+        menu.appendChild(div);
     });
 
-    filter();
+    wrap.appendChild(btn);
+    wrap.appendChild(menu);
 }
 
-function setLang(lang) {
-    currentLang = lang;
-    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-
-    const stats = document.getElementById('stats-line');
-    stats.textContent = `${allPrompts.length} ${t('stats')}`;
-    document.getElementById('footer-total').textContent = `${allPrompts.length}+`;
-
-    document.getElementById('search').placeholder = t('searchPlaceholder');
-
-    const catSel = document.getElementById('cat-filter');
-    if (catSel.options.length > 1) {
-        catSel.options[0].textContent = t('catAll');
-        for (let i = 1; i < catSel.options.length; i++) {
-            catSel.options[i].textContent = lang === 'zh' ? catSel.options[i].dataset.zh : catSel.options[i].dataset.en;
-        }
-    }
-
-    const diffSel = document.getElementById('diff-filter');
-    diffSel.options[0].textContent = t('diffAll');
-    diffSel.options[1].textContent = t('diffBeginner');
-    diffSel.options[2].textContent = t('diffIntermediate');
-    diffSel.options[3].textContent = t('diffAdvanced');
-
-    const modelSel = document.getElementById('model-filter');
-    modelSel.options[0].textContent = t('modelAll');
-
-    document.getElementById('footer').querySelector('a').textContent = t('github');
-
-    filter();
+function toggleMenu(wrap) {
+    let open = wrap.querySelector('.filter-menu.open');
+    if (open) { open.classList.remove('open'); return; }
+    // Close all others
+    document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
+    wrap.querySelector('.filter-menu').classList.add('open');
 }
 
-function filter() {
-    const q = document.getElementById('search').value.toLowerCase();
-    const cat = document.getElementById('cat-filter').value;
-    const diff = document.getElementById('diff-filter').value;
-    const model = document.getElementById('model-filter').value;
-    const activeTags = [...document.querySelectorAll('.tag.active')].map(e => e.textContent);
+function selectOption(wrap, optEl, optData) {
+    let btn = wrap.querySelector('.filter-btn');
+    btn.textContent = lang === 'zh' ? optData.label_zh : optData.label_en;
+    btn.dataset.value = optData.val;
+    wrap.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    optEl.classList.add('selected');
+    wrap.querySelector('.filter-menu').classList.remove('open');
+    render();
+}
 
-    let filtered = allPrompts;
-    if (cat !== 'all') filtered = filtered.filter(p => p.category === cat);
-    if (diff !== 'all') filtered = filtered.filter(p => p.difficulty === diff);
-    if (model !== 'all') filtered = filtered.filter(p => p.model_compatibility.includes(model));
+// Close menus on outside click
+document.addEventListener('click', function() {
+    document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
+});
 
+// ======= SET LANGUAGE =======
+function setLang(l) {
+    lang = l;
+    document.getElementById('lzh').classList.toggle('active', l === 'zh');
+    document.getElementById('len').classList.toggle('active', l === 'en');
+    document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+
+    // Update dropdown button labels
+    ['dd-cat','dd-diff','dd-model'].forEach(id => {
+        let wrap = document.getElementById(id);
+        let btn = wrap.querySelector('.filter-btn');
+        let val = btn.dataset.value;
+        wrap.querySelectorAll('.opt').forEach(opt => {
+            // Re-label based on stored data
+            let oVal = opt.dataset.value;
+            let key = wrap.dataset.key;
+            if (key === 'cat') {
+                let label = oVal === 'all' ? t('catAll') : CAT_LABEL[oVal][lang];
+                opt.textContent = label;
+                if (val === oVal) btn.textContent = label;
+            } else if (key === 'diff') {
+                let label = oVal === 'all' ? t('diffAll') : DIFF_LABEL[oVal][lang];
+                opt.textContent = label;
+                if (val === oVal) btn.textContent = label;
+            } else {
+                opt.textContent = oVal; // model names stay same
+                if (val === oVal) btn.textContent = oVal;
+            }
+        });
+    });
+
+    document.getElementById('header-stat').textContent = t('header', {n: allPrompts.length});
+    document.getElementById('search').placeholder = t('search');
+    render();
+}
+
+// ======= RENDER =======
+function render() {
+    let q = (document.getElementById('search').value || '').toLowerCase();
+    let cat = document.getElementById('dd-cat').querySelector('.filter-btn').dataset.value;
+    let diff = document.getElementById('dd-diff').querySelector('.filter-btn').dataset.value;
+    let model = document.getElementById('dd-model').querySelector('.filter-btn').dataset.value;
+    let activeTags = [...document.querySelectorAll('.tag.active')].map(e => e.textContent);
+
+    let list = allPrompts;
+    if (cat !== 'all') list = list.filter(p => p.category === cat);
+    if (diff !== 'all') list = list.filter(p => p.difficulty === diff);
+    if (model !== 'all') list = list.filter(p => p.model_compatibility.includes(model));
     if (q) {
-        filtered = filtered.filter(p =>
-            p.title.toLowerCase().includes(q) ||
-            p.title_cn.includes(q) ||
-            p.description.toLowerCase().includes(q) ||
-            p.description_cn.includes(q) ||
-            p.tags.some(tg => tg.includes(q)) ||
-            p.id.includes(q) ||
-            p.prompt.toLowerCase().includes(q) ||
-            p.prompt_cn.includes(q)
+        list = list.filter(p =>
+            (p.title || '').toLowerCase().includes(q) ||
+            (p.title_cn || '').includes(q) ||
+            (p.description || '').toLowerCase().includes(q) ||
+            (p.description_cn || '').includes(q) ||
+            (p.tags || []).some(tg => tg.toLowerCase().includes(q)) ||
+            (p.id || '').includes(q) ||
+            (p.prompt || '').toLowerCase().includes(q) ||
+            (p.prompt_cn || '').includes(q)
         );
     }
+    if (activeTags.length) list = list.filter(p => activeTags.every(tg => (p.tags || []).includes(tg)));
 
-    if (activeTags.length) {
-        filtered = filtered.filter(p => activeTags.every(tg => p.tags.includes(tg)));
-    }
+    document.getElementById('summary').textContent = t('results', {n: list.length});
 
-    document.getElementById('results-count').textContent =
-        `${t('showing')}${filtered.length}${t('of')}${allPrompts.length}`;
-
-    const list = document.getElementById('card-list');
-    list.innerHTML = filtered.map(p => `
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <span class="card-id">${p.id}</span>
-                    <span class="card-title">${p.title}</span>
-                    <span class="card-title-cn">${p.title_cn}</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="font-size:11px;color:#6e7681;">${currentLang === 'zh' ? ({beginner:'入门',intermediate:'进阶',advanced:'高级'})[p.difficulty] : p.difficulty}</span>
-                    <button class="expand-btn" onclick="togglePrompt(this, '${p.id}')">${t('showPrompt')}</button>
-                </div>
-            </div>
-            <div class="card-desc">${currentLang === 'zh' ? p.description_cn : p.description}</div>
-            <div class="card-meta">
-                ${p.tags.map(tg=>`<span>${tg}</span>`).join('')}
-                ${p.model_compatibility.map(m=>`<span style="background:#1f6feb22;border-color:#1f6feb44;">${m}</span>`).join('')}
-            </div>
-            <div class="card-prompt" id="prompt-${p.id}">
-                <span class="lang-tab active" onclick="switchLang(this,'en','${p.id}')">EN</span>
-                <span class="lang-tab" onclick="switchLang(this,'cn','${p.id}')">中文</span>
-                <button class="copy-btn" onclick="copyPrompt('${p.id}','en')">${t('copy')} EN</button>
-                <button class="copy-btn" onclick="copyPrompt('${p.id}','cn')">${t('copy')} 中文</button>
-                <pre id="text-${p.id}">${escapeHtml(currentLang === 'zh' ? p.prompt_cn : p.prompt)}</pre>
-            </div>
+    let cardsHtml = list.map(p => {
+        let desc = lang === 'zh' ? (p.description_cn || p.description) : (p.description || p.description_cn);
+        let diffLabel = lang === 'zh' ? DIFF_LABEL[p.difficulty].zh : p.difficulty;
+        return `<div class="card">
+    <div class="card-top">
+        <div><span class="card-id">${p.id}</span> <span class="card-title">${p.title}</span> <span class="card-title-cn">${p.title_cn || ''}</span></div>
+        <div style="display:flex;align-items:center;gap:8px;">
+            <span class="diff-tag" style="font-size:11px;padding:2px 8px;border-radius:4px;">${diffLabel}</span>
+            <button class="expand-btn" onclick="toggleCard('${p.id}')">${t('show')}</button>
         </div>
-    `).join('');
+    </div>
+    <div class="card-desc">${desc}</div>
+    <div class="card-meta">${(p.tags||[]).map(tg=>`<span>${tg}</span>`).join('')}${(p.model_compatibility||[]).map(m=>`<span class="model-tag">${m}</span>`).join('')}</div>
+    <div class="card-body" id="body-${p.id}">
+        <div class="tab-row">
+            <span class="lang-tab active" onclick="switchTab(this,'en','${p.id}')">EN</span>
+            <span class="lang-tab" onclick="switchTab(this,'cn','${p.id}')">中文</span>
+            <button class="copy-btn" onclick="copyPrompt('${p.id}','en',this)">${t('copyEn')}</button>
+            <button class="copy-btn" onclick="copyPrompt('${p.id}','cn',this)">${t('copyCn')}</button>
+        </div>
+        <pre id="pre-${p.id}">${esc(p.prompt || '')}</pre>
+    </div>
+</div>`;
+    }).join('');
 
-    document.querySelectorAll('.card-prompt').forEach(el => el.classList.remove('show'));
+    document.getElementById('cards').innerHTML = cardsHtml;
 }
 
-function togglePrompt(btn, id) {
-    const el = document.getElementById('prompt-' + id);
-    const isOpen = el.classList.contains('show');
-    el.classList.toggle('show');
-    btn.textContent = isOpen ? t('showPrompt') : t('hidePrompt');
+function toggleCard(id) {
+    let body = document.getElementById('body-' + id);
+    let btn = body.parentElement.querySelector('.expand-btn');
+    let open = body.classList.toggle('show');
+    btn.textContent = open ? t('hide') : t('show');
 }
 
-function switchLang(tab, lang, id) {
-    const parent = tab.parentElement;
-    parent.querySelectorAll('.lang-tab').forEach(tg => tg.classList.remove('active'));
+function switchTab(tab, which, id) {
+    let row = tab.parentElement;
+    row.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const pre = document.getElementById('text-' + id);
-    const prompt = allPrompts.find(p => p.id === id);
-    if (prompt) pre.textContent = lang === 'en' ? prompt.prompt : prompt.prompt_cn;
+    let p = allPrompts.find(x => x.id === id);
+    document.getElementById('pre-' + id).textContent = (which === 'en' ? p.prompt : p.prompt_cn) || '';
 }
 
-function copyPrompt(id, lang) {
-    const prompt = allPrompts.find(p => p.id === id);
-    const text = lang === 'en' ? prompt.prompt : prompt.prompt_cn;
-    navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
-        const orig = btn.textContent;
+function copyPrompt(id, which, btn) {
+    let p = allPrompts.find(x => x.id === id);
+    let text = which === 'en' ? p.prompt : p.prompt_cn;
+    navigator.clipboard.writeText(text || '').then(() => {
+        let orig = btn.textContent;
         btn.textContent = t('copied');
         setTimeout(() => btn.textContent = orig, 1200);
     });
 }
 
-function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+// ======= START =======
 load();
 </script>
 </body>
