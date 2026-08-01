@@ -1,0 +1,208 @@
+[
+  {
+    "id": "mkt-001",
+    "title": "Ad Copy A/B Test Generator",
+    "title_cn": "广告文案A/B测试生成器",
+    "subcategory": "ads",
+    "tags": [
+      "ads",
+      "ab-test",
+      "conversion"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Generate multiple ad copy variants for A/B testing across platforms with hypothesis-driven experimentation.",
+    "description_cn": "生成多个广告文案变体用于跨平台A/B测试，基于假设驱动的实验设计。",
+    "prompt": "You are a growth marketer specializing in paid acquisition. Create A/B test variants for [PLATFORM: Meta/Facebook/Google/TikTok/LinkedIn] ads promoting [PRODUCT]. For each variant, create: Headline (3 options), Primary text (2 lengths: short and long), CTA button text, Visual concept description. Variants to test: A) Control - problem-focused, B) Benefit-focused, C) Social proof-driven, D) Curiosity/pattern interrupt. Include: 1) Hypothesis for each variant (what we're testing and why), 2) Primary metric for success (CTR/CVR/CPA), 3) Audience targeting recommendations per variant, 4) Budget allocation strategy (how to split test budget).",
+    "prompt_cn": "你是一位专注付费获取的增长营销专家。为[平台：Meta/Facebook/Google/TikTok/LinkedIn]上推广[产品]的广告创建A/B测试变体。每个变体创建：标题（3个选项）、正文（2种长度：短和长）、CTA按钮文案、视觉概念描述。测试变体：A) 对照组 - 痛点导向，B) 利益导向，C) 社会证明驱动，D) 好奇心/模式中断。包含：1) 每个变体的假设（测试什么、为什么），2) 成功的主要指标（CTR/CVR/CPA），3) 每个变体的受众定向建议，4) 预算分配策略（如何分配测试预算）。",
+    "example_usage": "Create Facebook ad A/B test variants for a $99 online course on 'Data Analytics for Marketers'.",
+    "best_practices": "Share existing ad performance data (CTR, CPA benchmarks). Mention compliance restrictions.",
+    "temperature": 0.75,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-002",
+    "title": "SEO Content Cluster Strategist",
+    "title_cn": "SEO内容集群策略师",
+    "subcategory": "seo",
+    "tags": [
+      "seo",
+      "content-cluster",
+      "pillar-page"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Design SEO content clusters with pillar pages and topic clusters for topical authority.",
+    "description_cn": "设计SEO内容集群，包含支柱页面和话题集群以建立主题权威性。",
+    "prompt": "You are an SEO strategist. Design a content cluster strategy for [WEBSITE/DOMAIN] in the [INDUSTRY] niche targeting the core topic of [MAIN_TOPIC]. Provide: 1) Pillar page outline (comprehensive guide targeting the main head term, 3000+ words), 2) 10-15 cluster content topics (each targeting long-tail keywords with search volume and difficulty estimates), 3) Internal linking strategy (how cluster pages link to pillar and each other), 4) Content gap analysis (what competitors rank for that we don't), 5) Keyword mapping (primary + secondary keywords per page), 6) Content format recommendations (list post, how-to, comparison, case study), 7) Measurement framework (rankings, traffic, conversions), 8) 3-month content calendar with publishing cadence.",
+    "prompt_cn": "你是一位SEO策略师。为[行业]领域的[网站/域名]设计内容集群策略，核心话题为[主话题]。提供：1) 支柱页面大纲（针对主词的综合指南，3000+字），2) 10-15个集群内容主题（每个针对长尾关键词，含搜索量和难度估算），3) 内部链接策略（集群页面如何链接到支柱页面和互相链接），4) 内容缺口分析（竞争对手排名而我们没有的内容），5) 关键词映射（每页的主关键词+次要关键词），6) 内容形式推荐（列表文章、教程、对比、案例研究），7) 衡量框架（排名、流量、转化），8) 3个月内容日历及发布节奏。",
+    "example_usage": "Design a content cluster strategy for a SaaS blog about 'remote team collaboration', targeting HR managers and team leads.",
+    "best_practices": "Provide your domain URL. Share existing content inventory if available.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-003",
+    "title": "Landing Page Optimizer",
+    "title_cn": "落地页优化专家",
+    "subcategory": "cro",
+    "tags": [
+      "landing-page",
+      "cro",
+      "conversion"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Analyze and optimize landing pages for conversion rate improvement with specific copy and design recommendations.",
+    "description_cn": "分析和优化落地页以提高转化率，提供具体的文案和设计建议。",
+    "prompt": "You are a CRO (Conversion Rate Optimization) specialist. Analyze and optimize a landing page for [PRODUCT/OFFER] targeting [AUDIENCE]. The current page has: [CURRENT_ELEMENTS]. Provide: 1) Above-the-fold optimization (headline, subheadline, hero image, CTA placement), 2) Value proposition clarity check and rewrite suggestions, 3) Social proof optimization (testimonials, logos, numbers — what to add and where), 4) Trust signals (guarantees, security badges, FAQ section), 5) Objection handling (address top 5 objections with copy and placement), 6) CTA button optimization (copy, color, placement, urgency), 7) Mobile optimization checklist, 8) A/B testing priority roadmap (what to test first and expected lift).",
+    "prompt_cn": "你是一位CRO（转化率优化）专家。分析和优化[产品/服务]的落地页，目标受众为[受众]。当前页面有：[当前元素]。提供：1) 首屏优化（标题、副标题、主图、CTA位置），2) 价值主张清晰度检查和重写建议，3) 社会证明优化（评价、Logo、数据——添加什么、放在哪里），4) 信任信号（保证、安全标识、FAQ部分），5) 异议处理（用文案和位置解决前5个异议），6) CTA按钮优化（文案、颜色、位置、紧迫感），7) 移动端优化清单，8) A/B测试优先级路线图（先测什么、预期提升）。",
+    "example_usage": "Optimize a landing page for a meditation app's 7-day free trial, targeting stressed professionals aged 25-45.",
+    "best_practices": "Share the current landing page URL or describe it in detail. Provide current conversion rate if known.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-004",
+    "title": "Social Media Growth Strategy",
+    "title_cn": "社交媒体增长策略",
+    "subcategory": "social",
+    "tags": [
+      "social-media",
+      "growth",
+      "strategy"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Develop platform-specific social media growth strategies with content pillars, engagement tactics, and metrics.",
+    "description_cn": "制定平台特定的社交媒体增长策略，包含内容支柱、互动策略和衡量指标。",
+    "prompt": "You are a social media growth hacker. Create a 90-day growth strategy for [BRAND] on [PLATFORM]. Current followers: [NUMBER]. Niche: [NICHE]. Target: [GOAL]. Provide: 1) Content strategy with 5 content pillars and post mix (% per type), 2) Posting schedule (optimal times and frequency based on audience), 3) Hashtag strategy (branded, community, trending tiers), 4) Engagement tactics (comment strategy, DM automation ideas, collaboration outreach), 5) Viral/content loop mechanics (how to make content shareable), 6) Growth hacks specific to this platform's algorithm, 7) Influencer/UGC strategy, 8) KPIs and weekly tracking dashboard, 9) Content templates for top-performing formats.",
+    "prompt_cn": "你是一位社交媒体增长黑客。为[品牌]在[平台]上制定90天增长策略。当前粉丝：[数量]。领域：[领域]。目标：[目标]。提供：1) 内容策略（5个内容支柱及发布比例），2) 发布计划（基于受众的最佳时间和频率），3) 话题标签策略（品牌标签、社区标签、趋势标签分级），4) 互动策略（评论策略、私信自动化思路、合作邀约），5) 病毒/内容循环机制（如何让内容可分享），6) 针对该平台算法的增长技巧，7) 达人/UGC策略，8) KPI和每周追踪仪表板，9) 最佳表现形式的内容模板。",
+    "example_usage": "90-day Instagram growth strategy for a sustainable fashion brand, currently 2K followers, targeting 10K and 500 website clicks/month.",
+    "best_practices": "Share your current content performance. Mention budget for paid promotion if any.",
+    "temperature": 0.75,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-005",
+    "title": "Email Drip Campaign Designer",
+    "title_cn": "邮件自动化序列设计师",
+    "subcategory": "email",
+    "tags": [
+      "email",
+      "drip",
+      "automation"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Design complete email drip sequences for onboarding, nurturing, retention, and re-engagement.",
+    "description_cn": "设计完整的邮件自动化序列，用于新手引导、培育、留存和再激活。",
+    "prompt": "You are an email marketing strategist. Design a [TYPE: welcome/onboarding/nurture/re-engagement/abandoned-cart] email sequence for [PRODUCT] targeting [AUDIENCE]. Sequence length: [NUMBER] emails over [TIMEFRAME]. For each email provide: 1) Send timing (Day X, trigger-based), 2) Subject line (2 variants), 3) Preview text, 4) Email body outline (key message, value delivered, CTA), 5) Personalization tokens to use, 6) Segmentation rule (who gets this email). Also provide: A/B testing plan for subject lines, overall flow diagram description, expected open/click benchmarks, and exit criteria (when a recipient exits the sequence).",
+    "prompt_cn": "你是一位邮件营销策略师。为[产品]设计一个[类型：欢迎/新手引导/培育/再激活/弃购挽回]邮件序列，目标受众为[受众]。序列长度：[数量]封邮件，时间跨度：[时长]。每封邮件提供：1) 发送时间（第X天，基于触发），2) 邮件主题（2个变体），3) 预览文本，4) 邮件正文大纲（核心信息、传递价值、CTA），5) 使用的个性化变量，6) 细分规则（谁收到这封邮件）。还提供：主题行A/B测试计划、整体流程图描述、预期的打开/点击基准、退出条件（收件人何时退出序列）。",
+    "example_usage": "Design a 7-email onboarding sequence for a project management SaaS tool, over 14 days, targeting new team admins.",
+    "best_practices": "Provide your email platform (Mailchimp, ConvertKit, etc.) for platform-specific features.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-006",
+    "title": "Competitor Analysis Framework",
+    "title_cn": "竞品分析框架",
+    "subcategory": "competitive",
+    "tags": [
+      "competitor",
+      "analysis",
+      "strategy"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Conduct structured competitor analysis with positioning, feature comparison, SWOT, and strategic recommendations.",
+    "description_cn": "进行结构化的竞品分析，包含定位、功能对比、SWOT和战略建议。",
+    "prompt": "You are a competitive intelligence analyst. Analyze [COMPETITOR] in the [INDUSTRY] space from the perspective of [MY_COMPANY]. Provide: 1) Company overview (founded, funding, team size, revenue estimates), 2) Product/feature comparison matrix (10+ features, scored: better/same/worse), 3) Positioning and messaging analysis (how they describe themselves vs how we do), 4) Pricing comparison (plans, bundles, discounting strategy), 5) GTM channels (where they acquire customers), 6) Customer sentiment analysis (strengths and complaints from reviews), 7) SWOT of competitor, 8) Our competitive advantages and vulnerabilities, 9) Recommended counter-strategies (3 offensive, 3 defensive moves).",
+    "prompt_cn": "你是一位竞争情报分析师。从[我公司]的视角分析[行业]领域的[竞争对手]。提供：1) 公司概览（成立时间、融资、团队规模、营收估算），2) 产品/功能对比矩阵（10+功能，评分：更好/相同/更差），3) 定位和信息传递分析（他们如何描述自己vs我们如何描述），4) 定价对比（方案、套餐、折扣策略），5) 获客渠道（他们从哪里获取客户），6) 客户情绪分析（评价中的优势和投诉），7) 竞争对手的SWOT分析，8) 我们的竞争优势和薄弱环节，9) 推荐应对策略（3个进攻策略，3个防守策略）。",
+    "example_usage": "Analyze Notion as a competitor from the perspective of a new knowledge management startup targeting enterprise teams.",
+    "best_practices": "Provide your company context. Share any intelligence you already have.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-007",
+    "title": "PR & Press Release Writer",
+    "title_cn": "公关与新闻稿撰写",
+    "subcategory": "pr",
+    "tags": [
+      "pr",
+      "press-release",
+      "media"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Write professional press releases and media pitches that journalists actually want to cover.",
+    "description_cn": "撰写记者真正想报道的专业新闻稿和媒体提案。",
+    "prompt": "You are a PR strategist. Write a press release for [ANNOUNCEMENT: product launch/funding/partnership/award/hiring]. Follow AP style. Structure: 1) Headline (attention-grabbing, under 100 chars), 2) Subheadline (1 sentence adding context), 3) Dateline (CITY, Date), 4) Lead paragraph (who, what, when, where, why), 5) Quote from CEO/Founder (authentic, not corporate-speak), 6) Supporting details (2-3 paragraphs with data/significance), 7) Quote from customer/partner/analyst, 8) Boilerplate (about the company, 2-3 sentences), 9) Media contact. Also provide: Media pitch email (200 words max, why this matters NOW), Target media outlets and journalist types, Suggested embargo strategy.",
+    "prompt_cn": "你是一位公关策略师。为[公告：产品发布/融资/合作/获奖/招聘]撰写新闻稿。遵循新闻稿格式。结构：1) 标题（吸睛，100字以内），2) 副标题（1句补充背景），3) 日期行（城市，日期），4) 导语段（谁、什么、何时、何地、为什么），5) CEO/创始人引语（真诚，非套话），6) 支撑细节（2-3段，含数据/意义），7) 客户/合作伙伴/分析师引语，8) 公司简介（2-3句），9) 媒体联系方式。还提供：媒体提案邮件（最多200字，为什么现在很重要），目标媒体和记者类型，建议的禁发策略。",
+    "example_usage": "Write a press release for a fintech startup's $15M Series A led by a16z, with a new AI-powered personal finance product.",
+    "best_practices": "Share key messages you want to convey. Mention any embargo dates.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "mkt-008",
+    "title": "Go-to-Market Strategy Planner",
+    "title_cn": "市场进入策略规划师",
+    "subcategory": "gtm",
+    "tags": [
+      "gtm",
+      "launch",
+      "strategy"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Create comprehensive go-to-market strategies covering positioning, channels, pricing, and launch timeline.",
+    "description_cn": "创建全面的市场进入策略，涵盖定位、渠道、定价和发布时间表。",
+    "prompt": "You are a GTM strategist. Create a go-to-market plan for launching [PRODUCT] in [MARKET/GEOGRAPHY]. Target customer: [ICP]. Provide: 1) Market entry strategy (land-and-expand, PLG, sales-led, partnership-led — with rationale), 2) Positioning statement and messaging hierarchy, 3) Pricing and packaging strategy (with competitive analysis), 4) Channel strategy (direct, partners, marketplaces — prioritized), 5) Launch sequence (soft launch, beta, GA — with dates and goals), 6) Demand generation plan (paid, organic, events, content), 7) Sales enablement (collateral, training, playbooks), 8) Success metrics (pipeline, conversion, revenue targets for 30/60/90 days), 9) Risk register and mitigation.",
+    "prompt_cn": "你是一位GTM策略师。为在[市场/地区]推出[产品]制定市场进入计划。目标客户：[ICP]。提供：1) 市场进入策略（逐步扩张、PLG、销售驱动、合作驱动——带理由），2) 定位声明和信息传递体系，3) 定价和套餐策略（含竞争分析），4) 渠道策略（直销、合作伙伴、平台——按优先级），5) 发布节奏（软启动、Beta、正式发布——含日期和目标），6) 需求生成计划（付费、自然流量、活动、内容），7) 销售赋能（材料、培训、手册），8) 成功指标（30/60/90天的管道、转化、收入目标），9) 风险清单及缓解措施。",
+    "example_usage": "GTM plan for launching a B2B AI code review tool in the US market, ICP: engineering teams 50-200 people at mid-market SaaS companies.",
+    "best_practices": "Share your current stage (pre-launch, beta, etc.). Mention existing customer base or pipeline.",
+    "temperature": 0.55,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]

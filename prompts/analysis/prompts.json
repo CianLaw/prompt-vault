@@ -1,0 +1,210 @@
+[
+  {
+    "id": "analysis-001",
+    "title": "Data Analysis Report Generator",
+    "title_cn": "数据分析报告生成器",
+    "subcategory": "data",
+    "tags": [
+      "data",
+      "analysis",
+      "report"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Transform raw data descriptions into comprehensive analysis reports with insights, visualizations, and recommendations.",
+    "description_cn": "将原始数据描述转化为包含洞察、可视化和建议的综合分析报告。",
+    "prompt": "You are a senior data analyst. Analyze the following data: [DATA_DESCRIPTION/SUMMARY]. Provide: 1) Executive summary (3 key findings), 2) Descriptive statistics (mean, median, distribution, outliers), 3) Trend analysis (what patterns emerge over time), 4) Correlation analysis (what variables relate to each other and how strongly), 5) Segmentation insights (natural groupings in the data), 6) Anomaly detection (unusual patterns and possible explanations), 7) Predictive indicators (leading indicators for [TARGET_METRIC]), 8) Actionable recommendations (3-5 data-driven actions), 9) Limitations and caveats. Use business language, not statistical jargon.",
+    "prompt_cn": "你是一位资深数据分析师。分析以下数据：[数据描述/摘要]。提供：1) 执行摘要（3个关键发现），2) 描述性统计（平均值、中位数、分布、异常值），3) 趋势分析（随时间出现的模式），4) 相关性分析（哪些变量相关及强度），5) 细分洞察（数据中的自然分组），6) 异常检测（异常模式及可能解释），7) 预测指标（对[目标指标]的前瞻性指标），8) 可执行建议（3-5个数据驱动的行动），9) 局限性和注意事项。使用商业语言而非统计术语。",
+    "example_usage": "Analyze monthly e-commerce sales data for the past 2 years, identifying seasonal patterns and top-performing product categories.",
+    "best_practices": "Provide data in structured format (CSV description, table). Mention the business context and key metrics.",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-002",
+    "title": "Sentiment and Opinion Analyzer",
+    "title_cn": "情感与观点分析器",
+    "subcategory": "sentiment",
+    "tags": [
+      "sentiment",
+      "reviews",
+      "nlp"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Analyze customer reviews, social media comments, or survey responses for sentiment, themes, and actionable insights.",
+    "description_cn": "分析客户评论、社交媒体评论或调查回复，提取情感、主题和可执行洞察。",
+    "prompt": "You are a consumer insights analyst. Analyze the following customer feedback: [FEEDBACK_TEXT]. Provide: 1) Overall sentiment score (% positive, neutral, negative), 2) Top 5 positive themes (what customers love, with representative quotes), 3) Top 5 pain points (what frustrates customers, with representative quotes), 4) Feature requests and wishlist items (ranked by frequency), 5) Competitor mentions (who is mentioned, in what context), 6) Sentiment trends (is it getting better or worse over time), 7) Customer segment differences (do different user types feel differently), 8) Priority action matrix (what to fix now vs next quarter), 9) NPS-style promoter/detractor breakdown.",
+    "prompt_cn": "你是一位消费者洞察分析师。分析以下客户反馈：[反馈文本]。提供：1) 整体情感评分（正面/中性/负面百分比），2) 前5个正面主题（客户喜欢什么，附代表性引用），3) 前5个痛点（什么让客户沮丧，附代表性引用），4) 功能需求和愿望清单（按频率排序），5) 竞品提及（谁被提及，什么场景），6) 情感趋势（随时间变好还是变差），7) 客户群体差异（不同用户类型感受是否不同），8) 优先级行动矩阵（现在修复vs下季度修复），9) NPS风格的推荐者/贬损者分解。",
+    "example_usage": "Analyze 100 App Store reviews for a meditation app, identify key UX issues and feature requests.",
+    "best_practices": "Provide reviews in a structured list. Mention your product category for context.",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-003",
+    "title": "Financial Modeling Assistant",
+    "title_cn": "财务建模助手",
+    "subcategory": "finance",
+    "tags": [
+      "finance",
+      "modeling",
+      "forecast"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Build financial models with revenue projections, cost structures, scenario analysis, and valuation estimates.",
+    "description_cn": "构建财务模型，包含收入预测、成本结构、情景分析和估值估算。",
+    "prompt": "You are a financial analyst. Build a financial model framework for [COMPANY/BUSINESS] in the [INDUSTRY] sector. Provide: 1) Revenue model with drivers and assumptions, 2) Cost structure (fixed vs variable, COGS breakdown), 3) Unit economics (CAC, LTV, payback period, gross margin), 4) 3-year PL projection (revenue, costs, EBITDA, net income), 5) Cash flow forecast (operating, investing, financing), 6) Balance sheet projection, 7) Scenario analysis (base, bull, bear cases with key assumptions), 8) Key SaaS metrics if applicable (MRR, ARR, churn, NDR), 9) Valuation range (using DCF and comparable multiples), 10) Sensitivity analysis on top 3 variables. Present in clear tables.",
+    "prompt_cn": "你是一位财务分析师。为[行业]领域的[公司/业务]构建财务模型框架。提供：1) 收入模型及驱动因素和假设，2) 成本结构（固定vs可变，COGS分解），3) 单位经济模型（获客成本、客户生命周期价值、回收期、毛利率），4) 3年损益预测（收入、成本、EBITDA、净利润），5) 现金流预测（经营、投资、融资），6) 资产负债表预测，7) 情景分析（基准、乐观、悲观情景及关键假设），8) 如适用，关键SaaS指标（MRR、ARR、流失率、NDR），9) 估值范围（使用DCF和可比倍数法），10) 前3个变量的敏感性分析。以清晰表格呈现。",
+    "example_usage": "Build a financial model for a B2B SaaS startup with 50K MRR growing 8 percent monthly, 24-month payback, evaluating path to 10M ARR.",
+    "best_practices": "Provide actual or estimated key metrics. Mention fundraising stage if for investor purposes.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-004",
+    "title": "Root Cause Analysis (5 Whys)",
+    "title_cn": "根本原因分析（5 Why法）",
+    "subcategory": "problem-solving",
+    "tags": [
+      "root-cause",
+      "5-whys",
+      "problem"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek"
+    ],
+    "description": "Conduct structured root cause analysis using 5 Whys, Fishbone diagrams, and causal chain mapping.",
+    "description_cn": "使用5 Why法、鱼骨图和因果链图进行结构化的根本原因分析。",
+    "prompt": "You are a quality assurance and process improvement specialist. Conduct a root cause analysis for this problem: [PROBLEM]. Use three methods: 1) 5 Whys - drill down from the surface problem to root cause through 5 layers of why, 2) Fishbone/Ishikawa diagram - categorize causes into: People, Process, Technology, Environment, Materials, Measurement, 3) Causal chain mapping - trace the sequence of events and conditions that led to the problem. Then: distinguish root causes from symptoms, suggest corrective actions (immediate fixes) and preventive actions (long-term solutions), and propose a monitoring plan to verify the fix works.",
+    "prompt_cn": "你是一位质量保证和流程改进专家。对以下问题进行根本原因分析：[问题]。使用三种方法：1) 5 Why法 - 从表面问题深入5层为什么到根本原因，2) 鱼骨图/石川图 - 将原因分为：人员、流程、技术、环境、材料、测量，3) 因果链图 - 追溯导致问题的事件和条件序列。然后：区分根本原因和症状，建议纠正措施（即时修复）和预防措施（长期解决方案），并提出验证修复效果的监控计划。",
+    "example_usage": "Analyze why a production database went down for 3 hours during peak traffic using root cause analysis.",
+    "best_practices": "Describe the problem with timeline and impact. Mention what has already been investigated.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-005",
+    "title": "Market Research Analyst",
+    "title_cn": "市场研究分析师",
+    "subcategory": "market",
+    "tags": [
+      "market",
+      "research",
+      "trends"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Conduct comprehensive market research covering sizing, trends, segments, competitive landscape, and opportunities.",
+    "description_cn": "进行全面的市场研究，涵盖规模、趋势、细分、竞争格局和机会。",
+    "prompt": "You are a market research analyst at a top consulting firm. Research the [INDUSTRY/MARKET] focusing on [GEOGRAPHY]. Provide: 1) Market overview (definition, current state, maturity), 2) Market size (TAM, SAM, SOM with methodology and sources), 3) Growth drivers and inhibitors (5 each with impact assessment), 4) Market trends (technology, consumer behavior, regulatory), 5) Customer segmentation (3-5 segments with needs, behaviors, willingness to pay), 6) Competitive landscape (market share, positioning map, key players with profiles), 7) Value chain analysis, 8) Key success factors, 9) Opportunities and white spaces, 10) Market entry recommendations.",
+    "prompt_cn": "你是一位顶级咨询公司的市场研究分析师。研究[地区]的[行业/市场]。提供：1) 市场概览（定义、现状、成熟度），2) 市场规模（TAM、SAM、SOM，含方法论和来源），3) 增长驱动因素和抑制因素（各5个，含影响评估），4) 市场趋势（技术、消费者行为、监管），5) 客户细分（3-5个细分群体，含需求、行为、支付意愿），6) 竞争格局（市场份额、定位图、主要玩家介绍），7) 价值链分析，8) 关键成功因素，9) 机会和空白地带，10) 市场进入建议。",
+    "example_usage": "Research the AI code assistant market in China 2026, covering GitHub Copilot, Tongyi Lingma, Baidu Comate.",
+    "best_practices": "Specify the time horizon. Mention if this is for investment, product launch, or strategic planning.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-006",
+    "title": "Legal Document Analyzer",
+    "title_cn": "法律文件分析器",
+    "subcategory": "legal",
+    "tags": [
+      "legal",
+      "contract",
+      "review"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Analyze legal documents for key clauses, risks, obligations, and negotiation points.",
+    "description_cn": "分析法律文件中的关键条款、风险、义务和谈判要点。",
+    "prompt": "You are a legal analyst (not a lawyer - for informational purposes only). Analyze this legal document summary: [DOCUMENT_TYPE and KEY CLAUSES]. Identify: 1) Key obligations for each party, 2) Risk areas and unfavorable terms (with severity High/Medium/Low), 3) Missing clauses that should be included, 4) Ambiguous language that could lead to disputes, 5) Termination and exit conditions, 6) Liability and indemnification analysis, 7) IP ownership and licensing terms, 8) Payment and penalty terms, 9) Suggested modifications for a more balanced agreement. Disclaimer: This is not legal advice; consult a qualified attorney.",
+    "prompt_cn": "你是一位法律分析师（非律师——仅供参考）。分析以下法律文件摘要：[文件类型和关键条款]。识别：1) 各方的关键义务，2) 风险领域和不利条款（标注严重程度：高/中/低），3) 应包含但缺失的条款，4) 可能导致争议的模糊语言，5) 终止和退出条件，6) 责任和赔偿分析，7) 知识产权所有权和许可条款，8) 付款和罚款条款，9) 为达成更平衡协议的建议修改。免责声明：此非法律建议，请咨询合格律师。",
+    "example_usage": "Analyze a SaaS vendor contract for a startup, focusing on data ownership, service level guarantees, and termination clauses.",
+    "best_practices": "Paste key clauses - do not share entire confidential contracts. Specify jurisdiction.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-007",
+    "title": "User Research Synthesis",
+    "title_cn": "用户研究综合分析师",
+    "subcategory": "ux-research",
+    "tags": [
+      "ux",
+      "user-research",
+      "synthesis"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Synthesize user research data into journey maps, personas, opportunity areas, and design recommendations.",
+    "description_cn": "将用户研究数据综合为用户旅程图、人物画像、机会领域和设计建议。",
+    "prompt": "You are a UX research lead. Synthesize this user research data: [RESEARCH_DATA - interviews, surveys, usability tests]. Provide: 1) Key user personas (2-3, with goals, pain points, behaviors, and quotes), 2) User journey map for [PRIMARY_TASK] (stages, actions, thoughts, emotions, pain points, opportunities), 3) Top 5 usability issues (with severity, frequency, and user impact), 4) Mental model insights (how users think about the product vs how it actually works), 5) Jobs-to-be-Done framework (functional, emotional, social jobs), 6) Design opportunity areas (prioritized by user impact and business value), 7) Research-backed design principles, 8) Questions for further research.",
+    "prompt_cn": "你是一位UX研究负责人。综合以下用户研究数据：[研究数据 - 访谈、问卷、可用性测试]。提供：1) 关键用户画像（2-3个，含目标、痛点、行为和引语），2) [主要任务]的用户旅程图（阶段、行动、想法、情绪、痛点、机会），3) 前5个可用性问题（含严重程度、频率和用户影响），4) 心智模型洞察（用户如何看待产品vs产品实际运作方式），5) 待完成工作框架（功能性、情感性、社会性工作），6) 设计机会领域（按用户影响和商业价值排序），7) 基于研究的设计原则，8) 进一步研究的问题。",
+    "example_usage": "Synthesize findings from 15 user interviews about a food delivery app, focusing on the ordering and tracking experience.",
+    "best_practices": "Organize data by themes. Mention research methodology and sample size.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "analysis-008",
+    "title": "Technical Architecture Review",
+    "title_cn": "技术架构评审",
+    "subcategory": "architecture",
+    "tags": [
+      "architecture",
+      "review",
+      "tech"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Review technical architectures for scalability, reliability, security, and cost efficiency.",
+    "description_cn": "评审技术架构的可扩展性、可靠性、安全性和成本效率。",
+    "prompt": "You are a principal architect. Review this system architecture: [ARCHITECTURE_DESCRIPTION]. Evaluate across: 1) Scalability (horizontal/vertical, bottlenecks, auto-scaling readiness), 2) Reliability (single points of failure, fault tolerance, disaster recovery), 3) Security (data in transit/at rest, authentication/authorization, threat surface), 4) Performance (latency analysis, caching strategy, database optimization), 5) Cost efficiency (resource utilization, suggested optimizations), 6) Maintainability (modularity, testing strategy, observability), 7) Technology choices (are these the right tools? alternatives?), 8) Migration/evolution path. Provide a risk matrix and prioritized improvement roadmap.",
+    "prompt_cn": "你是一位首席架构师。评审此系统架构：[架构描述]。从以下维度评估：1) 可扩展性（水平/垂直扩展、瓶颈、自动伸缩准备度），2) 可靠性（单点故障、容错、灾难恢复），3) 安全性（传输/存储中的数据加密、认证/授权、威胁面），4) 性能（延迟分析、缓存策略、数据库优化），5) 成本效率（资源利用率、优化建议），6) 可维护性（模块化、测试策略、可观测性），7) 技术选型（这些工具是否合适？替代方案？），8) 迁移/演进路径。提供风险矩阵和优先级排序的改进路线图。",
+    "example_usage": "Review a microservices architecture on AWS handling 50K req/sec, using EKS, RDS, ElastiCache, and Kafka.",
+    "best_practices": "Describe the architecture with component interactions. Mention traffic patterns and SLAs.",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]

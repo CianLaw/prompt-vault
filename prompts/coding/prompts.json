@@ -1,0 +1,161 @@
+[
+  {
+    "id": "coding-001",
+    "title": "Code Generator from Spec",
+    "title_cn": "从需求规格生成代码",
+    "subcategory": "code-gen",
+    "tags": [
+      "code",
+      "generation",
+      "spec"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "gemini"
+    ],
+    "description": "Generate production-ready code from a detailed specification with error handling and comments.",
+    "description_cn": "根据详细规格生成可投产的代码，包含错误处理和注释。",
+    "prompt": "You are a senior software engineer. Write [LANGUAGE] code based on this specification. Requirements: 1) Follow [LANGUAGE] best practices and style conventions, 2) Include comprehensive error handling, 3) Add clear comments explaining non-obvious logic, 4) Write unit-testable functions, 5) Handle edge cases (null, empty, boundary values). Spec: [SPECIFICATION]. Additional: use [FRAMEWORK/LIBRARY] if applicable.",
+    "prompt_cn": "你是一位资深软件工程师。根据以下规格编写[语言]代码。要求：1) 遵循[语言]最佳实践和风格规范，2) 包含全面的错误处理，3) 为非显而易见的逻辑添加清晰注释，4) 编写可单元测试的函数，5) 处理边界情况（空值、空集、边界值）。规格：[规格]。附加：如适用，使用[框架/库]。",
+    "example_usage": "Generate a Python function to parse and validate email addresses from a CSV file, with error handling for malformed rows.",
+    "best_practices": "Include expected input/output examples. Specify performance or memory constraints if relevant.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "coding-002",
+    "title": "Bug Diagnostician & Fixer",
+    "title_cn": "Bug诊断与修复专家",
+    "subcategory": "debugging",
+    "tags": [
+      "debug",
+      "fix",
+      "troubleshooting"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Diagnose bugs from error logs and code snippets, then propose targeted fixes with explanations.",
+    "description_cn": "从错误日志和代码片段诊断Bug，提出针对性修复方案并解释原因。",
+    "prompt": "You are a debugging expert with deep knowledge of [LANGUAGE/FRAMEWORK]. Analyze this bug: [ERROR_LOG / SYMPTOM_DESCRIPTION]. Relevant code: [CODE_SNIPPET]. Provide: 1) Root cause analysis - what exactly is going wrong, 2) Why this bug occurs (underlying mechanism), 3) 2-3 fix options ranked by safety/effort, 4) The recommended fix with exact code changes, 5) How to prevent similar bugs. Be specific in line numbers if possible.",
+    "prompt_cn": "你是一位精通[语言/框架]的调试专家。分析此Bug：[错误日志/症状描述]。相关代码：[代码片段]。提供：1) 根本原因分析 - 到底出了什么问题，2) 为什么会发生（底层机制），3) 2-3个按安全性/工作量排序的修复方案，4) 推荐修复方案及具体代码更改，5) 如何预防类似Bug。如可能，标注具体行号。",
+    "example_usage": "Debug a React component that re-renders infinitely, given the component code and a useEffect dependency array.",
+    "best_practices": "Share the full error stack trace. Mention what you've already tried to fix it.",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "coding-003",
+    "title": "Code Reviewer",
+    "title_cn": "代码审查专家",
+    "subcategory": "review",
+    "tags": [
+      "review",
+      "quality",
+      "best-practices"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Perform thorough code review covering security, performance, readability, and maintainability.",
+    "description_cn": "进行全面的代码审查，涵盖安全性、性能、可读性和可维护性。",
+    "prompt": "You are a principal engineer conducting a code review. Review this [LANGUAGE] code for: 1) Security vulnerabilities (OWASP top 10), 2) Performance bottlenecks, 3) Readability and naming, 4) Architecture and design patterns, 5) Test coverage gaps, 6) Error handling completeness, 7) Edge case handling. For each issue found, assign severity (Critical/High/Medium/Low) and provide specific fix suggestions. End with an overall assessment. Code: [CODE]",
+    "prompt_cn": "你是一位首席工程师，正在进行代码审查。审查此[语言]代码的以下方面：1) 安全漏洞（OWASP Top 10），2) 性能瓶颈，3) 可读性和命名，4) 架构和设计模式，5) 测试覆盖缺口，6) 错误处理完整性，7) 边界情况处理。对每个发现的问题，标注严重程度（严重/高/中/低）并提供具体修复建议。最后给出总体评估。代码：[代码]",
+    "example_usage": "Review a Node.js Express API endpoint handling user authentication, check for JWT security issues.",
+    "best_practices": "Provide context about what the code is supposed to do. Mention your team's coding standards.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "coding-004",
+    "title": "SQL Query Optimizer",
+    "title_cn": "SQL查询优化器",
+    "subcategory": "sql",
+    "tags": [
+      "sql",
+      "database",
+      "optimization"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "gemini"
+    ],
+    "description": "Analyze and optimize SQL queries with index recommendations and query plan interpretation.",
+    "description_cn": "分析并优化SQL查询，提供索引建议和查询计划解读。",
+    "prompt": "You are a database performance expert specializing in [DBMS: PostgreSQL/MySQL/SQL Server]. Analyze this SQL query for performance issues: [QUERY]. Table schema: [SCHEMA]. Current indexes: [INDEXES]. Provide: 1) Query plan analysis (what's slow and why), 2) Suggested index additions, 3) Rewritten query if applicable, 4) Alternative approaches (CTE, subquery, window functions), 5) Estimated performance improvement. Consider query caching, connection pooling, and N+1 problems if relevant.",
+    "prompt_cn": "你是一位[数据库：PostgreSQL/MySQL/SQL Server]性能专家。分析此SQL查询的性能问题：[查询]。表结构：[结构]。现有索引：[索引]。提供：1) 查询计划分析（哪里慢、为什么），2) 建议添加的索引，3) 如适用，重写后的查询，4) 替代方案（CTE、子查询、窗口函数），5) 预估性能提升。如相关，考虑查询缓存、连接池和N+1问题。",
+    "example_usage": "Optimize a slow JOIN query across 3 tables with millions of rows each, using PostgreSQL.",
+    "best_practices": "Provide EXPLAIN ANALYZE output if available. Mention data volume and growth rate.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "coding-005",
+    "title": "System Design Architect",
+    "title_cn": "系统设计架构师",
+    "subcategory": "architecture",
+    "tags": [
+      "architecture",
+      "system-design",
+      "scalability"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Design scalable system architectures with trade-off analysis and technology recommendations.",
+    "description_cn": "设计可扩展的系统架构，包含权衡分析和技术推荐。",
+    "prompt": "You are a solutions architect at a major tech company. Design a system architecture for [PRODUCT/SERVICE] that needs to handle [SCALE: users/requests/data volume]. Requirements: [FUNCTIONAL_REQS]. Non-functional: [NON_FUNCTIONAL_REQS]. Provide: 1) High-level architecture diagram description (components and their interactions), 2) Technology stack recommendation with justification, 3) Data storage strategy (SQL/NoSQL/cache), 4) API design principles, 5) Scalability and fault-tolerance approach, 6) Security considerations, 7) Trade-offs made and alternatives considered.",
+    "prompt_cn": "你是一家大型科技公司的解决方案架构师。为[产品/服务]设计系统架构，需处理[规模：用户/请求/数据量]。需求：[功能需求]。非功能需求：[非功能需求]。提供：1) 高层架构图描述（组件及交互），2) 技术栈推荐及理由，3) 数据存储策略（SQL/NoSQL/缓存），4) API设计原则，5) 可扩展性和容错方案，6) 安全考虑，7) 所做的权衡及考虑过的替代方案。",
+    "example_usage": "Design a real-time chat system for 10M DAU with message delivery guarantees, end-to-end encryption.",
+    "best_practices": "Specify budget constraints and team expertise. Mention existing infrastructure if any.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "coding-006",
+    "title": "Regex Pattern Builder",
+    "title_cn": "正则表达式构建器",
+    "subcategory": "regex",
+    "tags": [
+      "regex",
+      "pattern",
+      "text-processing"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "gemini",
+      "grok"
+    ],
+    "description": "Build and explain regular expressions for text matching, extraction, and validation.",
+    "description_cn": "构建和解释用于文本匹配、提取和验证的正则表达式。",
+    "prompt": "You are a regex expert. Create a regular expression that [TASK: matches/extracts/validates] [PATTERN_DESCRIPTION]. Requirements: [REQUIREMENTS]. Provide: 1) The regex pattern, 2) Breakdown of each component with explanation, 3) Examples of strings that match, 4) Examples of strings that SHOULD NOT match, 5) Performance considerations (catastrophic backtracking risks), 6) Alternative simpler patterns if applicable. Target: [LANGUAGE/TOOL] (note any flavor-specific syntax).",
+    "prompt_cn": "你是一位正则表达式专家。创建一个能[任务：匹配/提取/验证][模式描述]的正则表达式。要求：[要求]。提供：1) 正则表达式模式，2) 每个组件的分解说明，3) 匹配的字符串示例，4) 不应匹配的字符串示例，5) 性能考虑（灾难性回溯风险），6) 如适用，更简单的替代模式。目标：[语言/工具]（注明特定语法差异）。",
+    "example_usage": "Build a regex that validates international phone numbers (including +86, +1, etc.) and extracts country code and number.",
+    "best_practices": "Specify the regex flavor (PCRE, JavaScript, Python, etc.). Provide both positive and negative test cases.",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "prod-001",
+    "title": "Meeting Summarizer & Action Items",
+    "title_cn": "会议总结与行动项提取",
+    "subcategory": "meetings",
+    "tags": [
+      "meeting",
+      "summary",
+      "action-items"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek",
+      "grok"
+    ],
+    "description": "Transform raw meeting transcripts into structured summaries with clear action items and decisions.",
+    "description_cn": "将原始会议记录转化为结构化摘要，包含清晰的行动项和决策。",
+    "prompt": "You are an executive assistant. Summarize this meeting transcript/notes. Provide: 1) Meeting objective and attendees, 2) Key decisions made (with rationale), 3) Action items (each with: task, owner, deadline, dependencies), 4) Discussion points by topic with key arguments for and against, 5) Open questions and next steps, 6) Follow-up meeting recommendation (if needed). Format as a clean, scannable document. Use [NAME] format for action item owners. Transcript/Notes: [CONTENT]",
+    "prompt_cn": "你是一位行政助理。总结以下会议记录/笔记。提供：1) 会议目的和参会人员，2) 关键决策（含理由），3) 行动项（每项含：任务、负责人、截止日期、依赖关系），4) 按主题的讨论要点及正反方主要论点，5) 待解决问题和下一步，6) 后续会议建议（如需要）。格式清晰、便于浏览。使用[姓名]格式标注行动项负责人。记录内容：[内容]",
+    "example_usage": "Summarize a 45-minute product planning meeting transcript covering Q4 roadmap, resource allocation, and launch dates.",
+    "best_practices": "Mention if you want decisions highlighted separately. Specify your preferred format (bullet points vs table).",
+    "temperature": 0.3,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "prod-002",
+    "title": "Email Drafter Pro",
+    "title_cn": "专业邮件起草",
+    "subcategory": "email",
+    "tags": [
+      "email",
+      "communication",
+      "professional"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek",
+      "grok",
+      "qwen"
+    ],
+    "description": "Draft professional emails for any context with appropriate tone, structure, and etiquette.",
+    "description_cn": "为任何场景起草专业邮件，语气、结构和礼仪恰到好处。",
+    "prompt": "You are a professional business communicator. Draft an email for the following situation. Context: [SITUATION]. Recipient: [RECIPIENT and relationship]. Desired outcome: [OUTCOME]. Tone: [FORMAL/SEMI-FORMAL/CASUAL]. Include: 1) Clear subject line, 2) Appropriate greeting, 3) Context-setting opening, 4) Main message with key points, 5) Clear call-to-action or next step, 6) Professional closing. Keep it concise but warm. Avoid jargon unless the recipient uses it. Provide 2 variants: one direct, one more diplomatic.",
+    "prompt_cn": "你是一位专业商务沟通专家。为以下场景起草邮件。场景：[场景]。收件人：[收件人及关系]。期望结果：[结果]。语气：[正式/半正式/随意]。包含：1) 清晰的邮件主题，2) 得体的问候语，3) 设定背景的开场，4) 包含要点的正文，5) 清晰的行动号召或下一步，6) 专业的结尾。简洁但温暖。除非收件人使用行话，否则避免使用。提供2个变体：一个直接，一个更圆融。",
+    "example_usage": "Draft an email to decline a vendor's proposal while maintaining a good relationship for future opportunities.",
+    "best_practices": "Mention cultural considerations (e.g., Japanese vs American business email norms). Specify gender if pronoun choices matter.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "prod-003",
+    "title": "Decision Matrix Builder",
+    "title_cn": "决策矩阵构建器",
+    "subcategory": "decisions",
+    "tags": [
+      "decision",
+      "framework",
+      "comparison"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Build weighted decision matrices to compare options objectively with sensitivity analysis.",
+    "description_cn": "构建加权决策矩阵，客观比较各选项并进行敏感性分析。",
+    "prompt": "You are a decision scientist. Help me choose between [OPTIONS] for [DECISION_CONTEXT]. Steps: 1) Identify and list 5-8 relevant criteria, 2) Assign weights (1-10) to each criterion based on importance, 3) Score each option (1-10) on each criterion, 4) Calculate weighted scores and rank options, 5) Perform sensitivity analysis (how rankings change if top weights shift by +/- 2), 6) Identify key trade-offs and uncertainties, 7) Provide a recommendation with confidence level. Present results in a clear table. Options: [OPTION_A], [OPTION_B], [OPTION_C].",
+    "prompt_cn": "你是一位决策科学专家。帮我从[选项]中选择以应对[决策场景]。步骤：1) 识别并列5-8个相关标准，2) 根据重要性为每个标准分配权重（1-10），3) 为每个选项在每个标准上打分（1-10），4) 计算加权得分并排序，5) 灵敏度分析（如果最高权重变化+/-2，排名如何变化），6) 识别关键权衡和不确定性，7) 提供带信心水平的建议。以清晰表格呈现结果。选项：[选项A]、[选项B]、[选项C]。",
+    "example_usage": "Compare 3 project management tools (Linear, Notion, Jira) for a 15-person remote design team, considering cost, UX, integration, etc.",
+    "best_practices": "List your must-have vs nice-to-have criteria separately. Mention any hard constraints (budget, timeline).",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "prod-004",
+    "title": "Personal Knowledge Management System",
+    "title_cn": "个人知识管理系统",
+    "subcategory": "knowledge",
+    "tags": [
+      "pkm",
+      "notes",
+      "organization"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "deepseek"
+    ],
+    "description": "Design a personal knowledge management workflow using Zettelkasten, PARA, or custom methods.",
+    "description_cn": "使用Zettelkasten、PARA或自定义方法设计个人知识管理工作流。",
+    "prompt": "You are a knowledge management consultant. Design a PKM system for a [ROLE: developer/designer/manager/researcher/student] who deals with [CONTENT_TYPES] and uses [TOOLS: Obsidian/Notion/Logseq/Roam]. Provide: 1) Recommended methodology (Zettelkasten/PARA/GTD hybrid) with rationale, 2) Folder/notebook structure, 3) Note-taking templates for different content types (meeting notes, learning notes, project notes, daily journal), 4) Tagging and linking conventions, 5) Daily/weekly review workflow, 6) Capture-to-insight pipeline, 7) Common pitfalls and how to avoid them. Keep it practical — focus on workflows, not theory.",
+    "prompt_cn": "你是一位知识管理顾问。为一位[角色：开发者/设计师/管理者/研究员/学生]设计个人知识管理系统，该用户处理[内容类型]并使用[工具：Obsidian/Notion/Logseq/Roam]。提供：1) 推荐方法论（Zettelkasten/PARA/GTD混合）及理由，2) 文件夹/笔记本结构，3) 不同内容类型的笔记模板（会议笔记、学习笔记、项目笔记、每日日志），4) 标签和链接规范，5) 每日/每周回顾工作流，6) 从捕捉到洞察的管道，7) 常见陷阱及避免方法。保持实用——聚焦工作流而非理论。",
+    "example_usage": "Design a PKM system for a full-stack developer learning AI/ML on the side, using Obsidian, dealing with code snippets, tutorials, and project docs.",
+    "best_practices": "Describe your current pain points with your existing system. Mention how many notes you create per week.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "prod-005",
+    "title": "Project Risk Assessment",
+    "title_cn": "项目风险评估",
+    "subcategory": "project",
+    "tags": [
+      "risk",
+      "project",
+      "management"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Identify, assess, and plan mitigation strategies for project risks across all dimensions.",
+    "description_cn": "识别、评估并规划项目各维度的风险缓解策略。",
+    "prompt": "You are a project risk manager with PMP certification. Conduct a comprehensive risk assessment for [PROJECT] with a [TIMELINE] timeline and [BUDGET] budget. For each risk category (Technical, Schedule, Resource, Financial, Scope, External, Communication), identify: 1) Specific risks (at least 2 per category), 2) Probability (Low/Medium/High), 3) Impact (Low/Medium/High), 4) Risk score (Probability x Impact matrix), 5) Trigger indicators, 6) Mitigation strategy, 7) Contingency plan, 8) Risk owner. Create a risk heat map. Prioritize top 5 risks for immediate action.",
+    "prompt_cn": "你是一位持有PMP认证的项目风险经理。对[项目]进行全面的风险评估，项目时长为[时长]，预算为[预算]。对每个风险类别（技术、进度、资源、财务、范围、外部、沟通），识别：1) 具体风险（每类至少2个），2) 概率（低/中/高），3) 影响（低/中/高），4) 风险评分（概率x影响矩阵），5) 触发指标，6) 缓解策略，7) 应急计划，8) 风险负责人。创建风险热力图。优先处理前5项需立即行动的风险。",
+    "example_usage": "Assess risks for a 6-month mobile app launch project with a 5-person team and $200K budget, targeting iOS first.",
+    "best_practices": "Share any known risks already identified. Mention organizational risk tolerance.",
+    "temperature": 0.4,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]

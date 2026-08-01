@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptVault - AI Prompt Library</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+    background: #0d1117; color: #c9d1d9; min-height: 100vh;
+}
+header {
+    background: #161b22; border-bottom: 1px solid #30363d;
+    padding: 24px 32px; text-align: center;
+}
+header h1 { font-size: 28px; font-weight: 600; color: #58a6ff; margin-bottom: 4px; }
+header p { color: #8b949e; font-size: 14px; }
+
+.search-wrap {
+    max-width: 720px; margin: 24px auto; padding: 0 16px;
+}
+.search-wrap input, .search-wrap select {
+    width: 100%; padding: 12px 16px;
+    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+    color: #c9d1d9; font-size: 15px; outline: none; margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+.search-wrap input:focus, .search-wrap select:focus { border-color: #58a6ff; }
+.search-wrap select { cursor: pointer; appearance: none; }
+
+.filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.filters select { flex: 1; min-width: 140px; margin-bottom: 0; }
+
+.tag-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag-filter .tag {
+    padding: 4px 12px; border-radius: 20px; font-size: 12px;
+    border: 1px solid #30363d; color: #8b949e; cursor: pointer;
+    transition: all 0.2s;
+}
+.tag-filter .tag:hover { border-color: #58a6ff; color: #58a6ff; }
+.tag-filter .tag.active { background: #1f6feb22; border-color: #1f6feb; color: #58a6ff; }
+
+.results { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+.results-header { color: #8b949e; font-size: 13px; margin-bottom: 16px; }
+
+.card {
+    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+    padding: 20px; margin-bottom: 12px; transition: border-color 0.2s;
+}
+.card:hover { border-color: #58a6ff; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.card-id { color: #8b949e; font-size: 11px; font-family: monospace; }
+.card-title { font-size: 16px; font-weight: 600; color: #e6edf3; }
+.card-title-cn { font-size: 13px; color: #8b949e; margin-left: 8px; }
+.card-desc { font-size: 13px; color: #8b949e; margin-bottom: 10px; line-height: 1.5; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 11px; color: #6e7681; margin-bottom: 12px; }
+.card-meta span {
+    padding: 2px 8px; border-radius: 4px; background: #21262d; border: 1px solid #30363d;
+}
+
+.card-prompt { display: none; margin-top: 12px; }
+.card-prompt.show { display: block; }
+.card-prompt pre {
+    background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
+    padding: 14px; font-size: 12px; line-height: 1.6; overflow-x: auto;
+    white-space: pre-wrap; word-break: break-word; color: #c9d1d9;
+}
+.card-prompt .lang-tab {
+    display: inline-block; padding: 4px 10px; border-radius: 4px 4px 0 0;
+    font-size: 11px; cursor: pointer; border: 1px solid #30363d; border-bottom: none;
+    background: #0d1117; color: #8b949e; margin-right: 4px;
+}
+.card-prompt .lang-tab.active { background: #161b22; color: #58a6ff; border-color: #58a6ff #30363d #161b22; }
+
+.expand-btn {
+    background: none; border: 1px solid #30363d; color: #58a6ff;
+    padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 12px;
+    transition: all 0.2s;
+}
+.expand-btn:hover { background: #1f6feb22; border-color: #58a6ff; }
+.copy-btn {
+    background: none; border: 1px solid #30363d; color: #8b949e;
+    padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
+    margin-left: 8px; transition: all 0.2s;
+}
+.copy-btn:hover { color: #e6edf3; border-color: #58a6ff; }
+
+.stats { max-width: 960px; margin: 0 auto; padding: 0 16px 32px; text-align: center; }
+.stats span { color: #58a6ff; font-weight: 600; }
+
+footer {
+    text-align: center; padding: 20px; color: #484f58; font-size: 12px;
+    border-top: 1px solid #30363d;
+}
+footer a { color: #58a6ff; text-decoration: none; }
+
+@media (max-width: 600px) {
+    header { padding: 16px; }
+    .filters { flex-direction: column; }
+    .card-header { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>PromptVault</h1>
+    <p id="stats-line">Loading...</p>
+</header>
+
+<div class="search-wrap">
+    <input type="text" id="search" placeholder="Search prompts by keyword, title, tag... (e.g. 'writing', 'GPT-4', 'marketing')" oninput="filter()">
+    <div class="filters">
+        <select id="cat-filter" onchange="filter()">
+            <option value="all">All Categories</option>
+        </select>
+        <select id="diff-filter" onchange="filter()">
+            <option value="all">All Difficulty</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+        <select id="model-filter" onchange="filter()">
+            <option value="all">All Models</option>
+            <option value="chatgpt">ChatGPT</option>
+            <option value="claude">Claude</option>
+            <option value="gemini">Gemini</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="grok">Grok</option>
+        </select>
+    </div>
+    <div class="tag-filter" id="tag-bar"></div>
+</div>
+
+<div class="results">
+    <div class="results-header" id="results-count">Showing all prompts</div>
+    <div id="card-list"></div>
+</div>
+
+<footer>
+    PromptVault &mdash; <span id="footer-total"></span> structured AI prompts &middot;
+    <a href="https://github.com" target="_blank">GitHub</a>
+</footer>
+
+<script>
+let allPrompts = [];
+let allTags = new Set();
+
+const catNames = {
+    writing:'Writing & Content', coding:'Coding & Development',
+    business:'Business & Finance', creative:'Creative & Design',
+    education:'Education & Learning', productivity:'Productivity & Workflow',
+    marketing:'Marketing & Growth', analysis:'Analysis & Research',
+    roleplay:'Roleplay & Simulation', 'image-gen':'Image Generation',
+    'video-gen':'Video Generation'
+};
+
+async function load() {
+    const cats = Object.keys(catNames);
+    const base = 'prompts/';
+    for (const cat of cats) {
+        try {
+            const r = await fetch(base + cat + '/prompts.json');
+            const data = await r.json();
+            data.forEach(p => { p.category = cat; allTags.add(...p.tags); });
+            allPrompts.push(...data);
+        } catch(e) { console.warn('Failed to load', cat, e); }
+    }
+    buildUI();
+    filter();
+}
+
+function buildUI() {
+    // Stats
+    document.getElementById('stats-line').textContent = `${allPrompts.length} prompts · 11 categories · Bilingual EN/ZH · JSON structured`;
+    document.getElementById('footer-total').textContent = `${allPrompts.length}+`;
+
+    // Category filter
+    const sel = document.getElementById('cat-filter');
+    for (const [k,v] of Object.entries(catNames)) {
+        const opt = document.createElement('option');
+        opt.value = k; opt.textContent = `${v}`;
+        sel.appendChild(opt);
+    }
+
+    // Tag bar
+    const tagBar = document.getElementById('tag-bar');
+    [...allTags].sort().forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'tag'; span.textContent = t;
+        span.onclick = () => { span.classList.toggle('active'); filter(); };
+        tagBar.appendChild(span);
+    });
+}
+
+function filter() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const cat = document.getElementById('cat-filter').value;
+    const diff = document.getElementById('diff-filter').value;
+    const model = document.getElementById('model-filter').value;
+    const activeTags = [...document.querySelectorAll('.tag.active')].map(e => e.textContent);
+
+    let filtered = allPrompts;
+    if (cat !== 'all') filtered = filtered.filter(p => p.category === cat);
+    if (diff !== 'all') filtered = filtered.filter(p => p.difficulty === diff);
+    if (model !== 'all') filtered = filtered.filter(p => p.model_compatibility.includes(model));
+
+    if (q) {
+        filtered = filtered.filter(p =>
+            p.title.toLowerCase().includes(q) ||
+            p.title_cn.includes(q) ||
+            p.description.toLowerCase().includes(q) ||
+            p.description_cn.includes(q) ||
+            p.tags.some(t => t.includes(q)) ||
+            p.id.includes(q) ||
+            p.prompt.toLowerCase().includes(q) ||
+            p.prompt_cn.includes(q)
+        );
+    }
+
+    if (activeTags.length) {
+        filtered = filtered.filter(p => activeTags.every(t => p.tags.includes(t)));
+    }
+
+    document.getElementById('results-count').textContent =
+        `Showing ${filtered.length} of ${allPrompts.length} prompts`;
+
+    const list = document.getElementById('card-list');
+    list.innerHTML = filtered.map(p => `
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <span class="card-id">${p.id}</span>
+                    <span class="card-title">${p.title}</span>
+                    <span class="card-title-cn">${p.title_cn}</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:11px;color:#6e7681;">${p.difficulty}</span>
+                    <button class="expand-btn" onclick="togglePrompt(this, '${p.id}')">Show Prompt</button>
+                </div>
+            </div>
+            <div class="card-desc">${p.description}</div>
+            <div class="card-meta">
+                ${p.tags.map(t=>`<span>${t}</span>`).join('')}
+                ${p.model_compatibility.map(m=>`<span style="background:#1f6feb22;border-color:#1f6feb44;">${m}</span>`).join('')}
+            </div>
+            <div class="card-prompt" id="prompt-${p.id}">
+                <span class="lang-tab active" onclick="switchLang(this,'en','${p.id}')">EN</span>
+                <span class="lang-tab" onclick="switchLang(this,'cn','${p.id}')">中文</span>
+                <button class="copy-btn" onclick="copyPrompt('${p.id}','en')">Copy EN</button>
+                <button class="copy-btn" onclick="copyPrompt('${p.id}','cn')">Copy 中文</button>
+                <pre id="text-${p.id}">${escapeHtml(p.prompt)}</pre>
+            </div>
+        </div>
+    `).join('');
+}
+
+function togglePrompt(btn, id) {
+    const el = document.getElementById('prompt-' + id);
+    const isOpen = el.classList.contains('show');
+    el.classList.toggle('show');
+    btn.textContent = isOpen ? 'Show Prompt' : 'Hide Prompt';
+}
+
+function switchLang(tab, lang, id) {
+    const parent = tab.parentElement;
+    parent.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const pre = document.getElementById('text-' + id);
+    const prompt = allPrompts.find(p => p.id === id);
+    if (prompt) pre.textContent = lang === 'en' ? prompt.prompt : prompt.prompt_cn;
+}
+
+function copyPrompt(id, lang) {
+    const prompt = allPrompts.find(p => p.id === id);
+    const text = lang === 'en' ? prompt.prompt : prompt.prompt_cn;
+    navigator.clipboard.writeText(text).then(() => {
+        // Brief flash could be added
+    });
+}
+
+function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+load();
+</script>
+</body>
+</html>

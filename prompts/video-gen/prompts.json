@@ -1,0 +1,162 @@
+[
+  {
+    "id": "vid-001",
+    "title": "YouTube Script Writer",
+    "title_cn": "YouTube脚本撰写师",
+    "subcategory": "youtube",
+    "tags": [
+      "youtube",
+      "script",
+      "video"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Write engaging YouTube video scripts with hooks, pacing, visual directions, and retention strategies.",
+    "description_cn": "撰写高互动率的YouTube视频脚本，包含钩子、节奏、视觉方向和留存策略。",
+    "prompt": "You are a YouTube scriptwriter for a [NICHE] channel with [SUBSCRIBER_COUNT] subscribers. Write a script for a [VIDEO_TYPE: tutorial/review/vlog/essay/listicle] about [TOPIC]. Target length: [DURATION] minutes. Structure: 1) Hook (first 5 seconds - pattern interrupt, bold claim, or intriguing question), 2) Intro (who you are, what value this video delivers), 3) Body (segmented into 3-5 chapters with timestamps), 4) B-roll and visual directions in brackets, 5) Retention tactics at specific minute marks (teaser upcoming segment, pattern interrupt), 6) Call-to-action (subscribe, comment, watch next), 7) Outro. Include: thumbnail concept and title options (3 variants tested for CTR).",
+    "prompt_cn": "你是一位[领域]频道（[订阅数]订阅者）的YouTube脚本撰写师。为[视频类型：教程/评测/Vlog/散文/列表]撰写关于[主题]的脚本。目标时长：[时长]分钟。结构：1) 钩子（前5秒 - 模式中断、大胆声明或有趣问题），2) 开场（你是谁、这个视频提供什么价值），3) 正文（分为3-5个章节，含时间戳），4) B-roll和视觉指导用方括号标注，5) 在特定分钟标记处的留存策略（预告后续环节、模式中断），6) 行动号召（订阅、评论、看下一个），7) 结尾。包含：缩略图概念和标题选项（3个变体，已针对点击率优化）。",
+    "example_usage": "Write a 12-minute video essay script about Why most productivity advice fails for a 100K self-improvement channel.",
+    "best_practices": "Share your channel average retention graph. Mention your content style (fast-cut vs documentary).",
+    "temperature": 0.75,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "vid-002",
+    "title": "Short-Form Video Creator",
+    "title_cn": "短视频创作者",
+    "subcategory": "short-form",
+    "tags": [
+      "tiktok",
+      "shorts",
+      "reels"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek",
+      "grok"
+    ],
+    "description": "Generate scripts and visual directions for short-form vertical videos optimized for algorithm discovery.",
+    "description_cn": "为算法推荐优化的竖屏短视频生成脚本和视觉指导。",
+    "prompt": "You are a short-form video strategist for [PLATFORM: TikTok/Reels/Shorts]. Create a video concept for [NICHE/TOPIC] targeting [AUDIENCE]. Length: [15-60] seconds. Provide: 1) Hook concept (first 1 second matters most), 2) Script (word-for-word, with timing per line), 3) Visual plan (shot list with camera angles, transitions, text overlays), 4) Audio strategy (trending sound, original voiceover, or music recommendation), 5) Caption and hashtag strategy (3-5 hashtags with rationale), 6) Looping strategy (make the end connect to the beginning), 7) Trend-jacking angle (how this taps into current trends), 8) Algorithm optimization notes.",
+    "prompt_cn": "你是一位[平台：TikTok/Reels/Shorts]的短视频策略师。为[领域/话题]创建一个面向[受众]的视频概念。时长：[15-60]秒。提供：1) 钩子概念（第1秒最关键），2) 脚本（逐字稿，每行标注时间），3) 视觉计划（分镜头列表，含机位、转场、文字叠加），4) 音频策略（热门音效、原创配音或音乐推荐），5) 文案和话题标签策略（3-5个标签及理由），6) 循环策略（让结尾连接到开头），7) 蹭热点角度（如何利用当前趋势），8) 算法优化笔记。",
+    "example_usage": "Create a 30-second TikTok about a hidden iOS 19 feature, targeting tech enthusiasts. Hook: Your iPhone has been hiding this for years.",
+    "best_practices": "Mention your niche and current follower count. Share what has worked for you before.",
+    "temperature": 0.85,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "vid-003",
+    "title": "AI Video Generation Prompt (Sora/Runway/Pika)",
+    "title_cn": "AI视频生成提示词（Sora/Runway/Pika）",
+    "subcategory": "ai-video",
+    "tags": [
+      "sora",
+      "runway",
+      "pika",
+      "ai-video"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Create precise prompts for AI video generation tools with camera movement, scene composition, and temporal consistency.",
+    "description_cn": "为AI视频生成工具创建精确提示词，包含相机运动、场景构图和时间一致性。",
+    "prompt": "You are an AI video prompt engineer specializing in [TOOL: Sora/Runway/Pika/Kling]. Create a video generation prompt for: [SCENE/CONCEPT]. Include: 1) Scene description (subject, setting, mood - in natural language, vivid and concrete), 2) Action/motion (what happens, at what speed, with what energy), 3) Camera movement (static, pan, dolly, crane, handheld - with direction and speed), 4) Lighting changes (if any, over the duration), 5) Temporal elements (slow motion, time-lapse, real-time), 6) Style reference (cinematic, documentary, animation, VFX), 7) Aspect ratio and duration, 8) Negative prompt (what to avoid - morphing, flickering, distortion). Provide 2 variants with different camera approaches.",
+    "prompt_cn": "你是一位专攻[工具：Sora/Runway/Pika/Kling]的AI视频提示词工程师。为[场景/概念]创建视频生成提示词。包含：1) 场景描述（主体、场景、情绪——自然语言，生动具体），2) 动作/运动（发生什么、速度如何、什么能量），3) 相机运动（固定、平移、推拉、摇臂、手持——含方向和速度），4) 光线变化（如有，在时长内），5) 时间元素（慢动作、延时、实时），6) 风格参考（电影感、纪录片、动画、VFX），7) 宽高比和时长，8) 负向提示（要避免什么——变形、闪烁、扭曲）。提供2个采用不同相机方式的变体。",
+    "example_usage": "Create a prompt for a 5-second cinematic shot of a samurai walking through a bamboo forest at dawn, mist rising, using Sora.",
+    "best_practices": "Specify the AI video tool and version. Mention output format requirements (4K, vertical etc).",
+    "temperature": 0.7,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "vid-004",
+    "title": "Video Ad Script Generator",
+    "title_cn": "视频广告脚本生成器",
+    "subcategory": "ads",
+    "tags": [
+      "ad",
+      "video",
+      "marketing"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Write video ad scripts for paid social, pre-roll, and connected TV with conversion-focused storytelling.",
+    "description_cn": "为付费社交广告、前贴片和联网电视撰写以转化为导向的视频广告脚本。",
+    "prompt": "You are a video ad creative director. Write a [LENGTH: 15s/30s/60s] video ad script for [PRODUCT] targeting [AUDIENCE] on [PLATFORM]. Ad objective: [OBJECTIVE]. Include: 1) Hook (first 3 seconds for skippable ads), 2) Problem agitation (make the pain visceral), 3) Solution introduction (with demo-like visualization), 4) Social proof snippet, 5) CTA with urgency. Also provide: 3 headline options for the ad, visual direction for each scene (shot type, composition, text overlays), audio strategy (music, SFX, voiceover tone), A/B testing variants (test different hooks), and platform-specific optimizations.",
+    "prompt_cn": "你是一位视频广告创意总监。为[产品]撰写一个面向[平台]上[受众]的[时长：15秒/30秒/60秒]视频广告脚本。广告目标：[目标]。包含：1) 钩子（可跳过广告的前3秒），2) 痛点激化（让痛点感同身受），3) 解决方案介绍（类似演示的可视化），4) 社会证明片段，5) 带紧迫感的行动号召。还提供：3个广告标题选项，每个场景的视觉指导（镜头类型、构图、文字叠加），音频策略（音乐、音效、配音语调），A/B测试变体（测试不同钩子），以及平台特定优化。",
+    "example_usage": "Write a 30-second Instagram video ad for a language learning app, targeting 25-35 professionals who want to learn Spanish for travel.",
+    "best_practices": "Provide your product key differentiator. Share existing ad performance benchmarks.",
+    "temperature": 0.7,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "vid-005",
+    "title": "Explainer Video Script and Storyboard",
+    "title_cn": "解说视频脚本与分镜",
+    "subcategory": "explainer",
+    "tags": [
+      "explainer",
+      "animation",
+      "storyboard"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Write scripts with storyboard directions for animated explainer videos, product demos, and educational content.",
+    "description_cn": "为动画解说视频、产品演示和教育内容撰写带分镜指导的脚本。",
+    "prompt": "You are an explainer video scriptwriter and storyboard artist. Create a [DURATION] explainer video for [PRODUCT/CONCEPT] targeting [AUDIENCE]. Structure: 1) The problem (make it relatable immediately), 2) The aggravation (why existing solutions fail), 3) The solution (how this product/concept solves it), 4) How it works (simplified, visual), 5) Benefits and proof, 6) Call to action. For each segment provide: script (voiceover text, word count, estimated duration), visual direction (illustration style, color palette, key visual metaphors), storyboard sketch description, animation style (motion graphics, character animation, kinetic typography), and transitions between scenes.",
+    "prompt_cn": "你是一位解说视频脚本撰写师和分镜师。为[产品/概念]创建一个面向[受众]的[时长]解说视频。结构：1) 问题（立即引起共鸣），2) 恶化（为什么现有方案失败），3) 解决方案（这个产品/概念如何解决），4) 如何工作（简化、可视化），5) 好处和证明，6) 行动号召。每个部分提供：脚本（配音文字、字数、预估时长），视觉指导（插画风格、色调、关键视觉隐喻），分镜草图描述，动画风格（动态图形、角色动画、动态字体设计），以及场景间转场。",
+    "example_usage": "Create a 90-second explainer video script for a decentralized identity verification platform, targeting non-technical business owners.",
+    "best_practices": "Describe your product in simple terms. Mention any existing brand animation guidelines.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "vid-006",
+    "title": "Video SEO and Metadata Optimizer",
+    "title_cn": "视频SEO与元数据优化器",
+    "subcategory": "seo",
+    "tags": [
+      "seo",
+      "youtube",
+      "metadata"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek"
+    ],
+    "description": "Optimize video titles, descriptions, tags, and thumbnails for maximum discoverability on YouTube and other platforms.",
+    "description_cn": "优化视频标题、描述、标签和缩略图以最大化在YouTube等平台上的可发现性。",
+    "prompt": "You are a video SEO specialist. Optimize the metadata for a video about [TOPIC] on [PLATFORM]. Context: [CONTEXT]. Provide: 1) Title optimization (3 options: click-driven, search-driven, hybrid - with CTR and SEO analysis), 2) Description template (first 2 lines visible before show more are most important, full description with timestamps, links, and keywords), 3) Tag strategy (primary target keyword, secondary keywords, long-tail tags, competitor tags - 20-30 tags total), 4) Hashtag strategy (3 hashtags for description), 5) Thumbnail strategy (concept, color psychology, text overlay, face expression), 6) Playlist and end screen optimization, 7) Competitor gap analysis (keywords competitors rank for that this video could capture).",
+    "prompt_cn": "你是一位视频SEO专家。为[平台]上关于[主题]的视频优化元数据。背景：[背景]。提供：1) 标题优化（3个选项：点击驱动、搜索驱动、混合——含CTR和SEO分析），2) 描述模板（展开更多前可见的前2行最重要，完整描述含时间戳、链接和关键词），3) 标签策略（主要目标关键词、次要关键词、长尾标签、竞品标签——总共20-30个标签），4) 话题标签策略（描述中的3个标签），5) 缩略图策略（概念、色彩心理学、文字叠加、面部表情），6) 播放列表和片尾优化，7) 竞品缺口分析（竞品排名而本视频可捕获的关键词）。",
+    "example_usage": "Optimize SEO for a 20-minute tutorial on React Server Components in 2026 for a coding channel with 50K subscribers.",
+    "best_practices": "Share your current video performance. Mention your target keyword if you have one.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]

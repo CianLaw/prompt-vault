@@ -1,0 +1,157 @@
+[
+  {
+    "id": "business-001",
+    "title": "Business Plan Generator",
+    "title_cn": "商业计划书生成器",
+    "subcategory": "planning",
+    "tags": [
+      "business-plan",
+      "startup",
+      "strategy"
+    ],
+    "difficulty": "advanced",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Create comprehensive business plans with market analysis, financial projections, and go-to-market strategy.",
+    "description_cn": "创建包含市场分析、财务预测和市场进入策略的综合商业计划书。",
+    "prompt": "You are a venture capitalist and business strategist. Create a detailed business plan for [COMPANY/IDEA]. Include: 1) Executive Summary (2 paragraphs), 2) Problem Statement and Market Opportunity (TAM/SAM/SOM), 3) Solution and Value Proposition, 4) Business Model and Revenue Streams, 5) Competitive Analysis (direct/indirect competitors with comparison table), 6) Go-to-Market Strategy, 7) Financial Projections (3-year, key assumptions), 8) Team Requirements, 9) Risk Analysis and Mitigation, 10) Funding Ask and Use of Funds. Be realistic with numbers and cite comparable companies for benchmarks.",
+    "prompt_cn": "你是一位风险投资人和商业策略师。为[公司/创意]创建详细的商业计划书。包含：1) 执行摘要（2段），2) 问题陈述和市场机会（TAM/SAM/SOM），3) 解决方案和价值主张，4) 商业模式和收入来源，5) 竞争分析（直接/间接竞品及对比表），6) 市场进入策略，7) 财务预测（3年，关键假设），8) 团队需求，9) 风险分析和缓解措施，10) 融资需求及资金用途。数据要务实，引用可比公司作为基准。",
+    "example_usage": "Create a business plan for an AI-powered personal shopping assistant app targeting Gen Z in Southeast Asia.",
+    "best_practices": "Provide industry data if available. Specify target market geography.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "business-002",
+    "title": "SWOT Analysis Framework",
+    "title_cn": "SWOT分析框架",
+    "subcategory": "strategy",
+    "tags": [
+      "swot",
+      "analysis",
+      "strategy"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek"
+    ],
+    "description": "Conduct thorough SWOT analysis with actionable strategic recommendations.",
+    "description_cn": "进行全面的SWOT分析，附带可执行的战略建议。",
+    "prompt": "You are a management consultant from McKinsey. Conduct a comprehensive SWOT analysis for [COMPANY/PRODUCT] in the [INDUSTRY] industry. For each quadrant provide at least 5 specific, evidence-backed points: Strengths (internal, what gives advantage), Weaknesses (internal, what needs improvement), Opportunities (external, market/technology/regulatory trends), Threats (external, competitors/market shifts/risks). Then provide: 1) SO Strategies (use strengths to seize opportunities), 2) WO Strategies (overcome weaknesses by exploiting opportunities), 3) ST Strategies (use strengths to avoid threats), 4) WT Strategies (minimize weaknesses and avoid threats). Include a 2x2 action priority matrix.",
+    "prompt_cn": "你是一位麦肯锡管理顾问。为[公司/产品]在[行业]中进行全面的SWOT分析。每个象限至少提供5个具体的、有依据的观点：优势（内部，带来优势的因素）、劣势（内部，需改进的因素）、机会（外部，市场/技术/监管趋势）、威胁（外部，竞争对手/市场变化/风险）。然后提供：1) SO策略（利用优势抓住机会），2) WO策略（通过利用机会克服劣势），3) ST策略（利用优势规避威胁），4) WT策略（最小化劣势并规避威胁）。包含2x2行动优先级矩阵。",
+    "example_usage": "SWOT analysis for a mid-size e-commerce company competing against Amazon and Shopee in 2026.",
+    "best_practices": "Provide recent revenue/market share data if available. Mention key competitors by name.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "business-003",
+    "title": "Investor Pitch Deck Outline",
+    "title_cn": "投资人路演大纲",
+    "subcategory": "fundraising",
+    "tags": [
+      "pitch",
+      "investor",
+      "fundraising"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Create a compelling investor pitch deck narrative with slide-by-slide content and storytelling flow.",
+    "description_cn": "创建有说服力的投资人路演叙事，包含逐页内容和故事讲述流程。",
+    "prompt": "You are a pitch coach who has helped startups raise over $500M. Create a pitch deck narrative for [COMPANY] seeking [AMOUNT] in [ROUND: Pre-seed/Seed/Series A/B]. Slide structure: 1) Title - company name and one-line value prop, 2) Problem - make it visceral, 3) Solution - demo or concept, 4) Why Now - market timing, 5) Market Size - TAM/SAM/SOM with sources, 6) Product - how it works, key features, 7) Traction - metrics, growth rate, testimonials, 8) Business Model - unit economics, 9) Competition - 2x2 matrix or petal diagram, 10) Team - why this team wins, 11) Financials - projections and key drivers, 12) The Ask - amount, use of funds, milestones. For each slide, write the key message and supporting data/story.",
+    "prompt_cn": "你是一位帮助初创公司融资超过5亿美元的路演教练。为[公司]创建融资路演叙事，寻求[金额]的[轮次：Pre-seed/Seed/Series A/B]。幻灯片结构：1) 封面 - 公司名和一句话价值主张，2) 痛点 - 让人感同身受，3) 解决方案 - 演示或概念，4) 时机 - 市场时机，5) 市场规模 - TAM/SAM/SOM含来源，6) 产品 - 工作原理和关键功能，7) 吸引力 - 指标、增长率、客户评价，8) 商业模式 - 单位经济模型，9) 竞争 - 2x2矩阵或花瓣图，10) 团队 - 为什么这个团队能赢，11) 财务 - 预测及关键驱动因素，12) 融资需求 - 金额、用途、里程碑。每页写出核心信息和支撑数据/故事。",
+    "example_usage": "Create a Series A pitch deck narrative for a B2B SaaS company with $2M ARR growing 15% MoM, seeking $10M.",
+    "best_practices": "Share your actual traction metrics. Mention any notable investors or advisors already on board.",
+    "temperature": 0.7,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "business-004",
+    "title": "Product Requirements Document (PRD)",
+    "title_cn": "产品需求文档(PRD)",
+    "subcategory": "product",
+    "tags": [
+      "prd",
+      "product",
+      "requirements"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude"
+    ],
+    "description": "Write detailed PRDs with user stories, acceptance criteria, success metrics, and technical considerations.",
+    "description_cn": "编写详细的PRD，包含用户故事、验收标准、成功指标和技术考虑。",
+    "prompt": "You are a senior product manager. Write a Product Requirements Document for [FEATURE/PRODUCT]. Structure: 1) Overview - what and why (problem statement), 2) Success Metrics - how we measure success (KPIs), 3) User Personas - who this is for, 4) User Stories (As a [persona], I want [goal], so that [reason]) with acceptance criteria, 5) Functional Requirements - detailed feature specs, 6) Non-functional Requirements - performance, security, accessibility, 7) Edge Cases and Error States, 8) Dependencies and Assumptions, 9) Out of Scope, 10) Launch Plan and Rollout Strategy, 11) Open Questions. Use MoSCoW prioritization for features.",
+    "prompt_cn": "你是一位资深产品经理。为[功能/产品]撰写产品需求文档。结构：1) 概述 - 是什么、为什么（问题陈述），2) 成功指标 - 如何衡量成功（KPI），3) 用户画像 - 目标用户，4) 用户故事（作为[角色]，我想要[目标]，以便[原因]）及验收标准，5) 功能需求 - 详细功能规格，6) 非功能需求 - 性能、安全、可访问性，7) 边界情况和错误状态，8) 依赖和假设，9) 不在范围内，10) 发布计划和推广策略，11) 待解决问题。使用MoSCoW优先级排序。",
+    "example_usage": "Write a PRD for adding AI-powered search to an e-commerce app, targeting 40% improvement in search-to-purchase conversion.",
+    "best_practices": "Share any existing user research. Mention technical constraints from the engineering team.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "business-005",
+    "title": "Negotiation Strategy Planner",
+    "title_cn": "谈判策略规划师",
+    "subcategory": "negotiation",
+    "tags": [
+      "negotiation",
+      "deal",
+      "strategy"
+    ],
+    "difficulty": "intermediate",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini"
+    ],
+    "description": "Develop comprehensive negotiation strategies with BATNA analysis, anchoring tactics, and concession planning.",
+    "description_cn": "制定全面的谈判策略，包含BATNA分析、锚定策略和让步计划。",
+    "prompt": "You are a negotiation expert trained at Harvard Law School. Develop a negotiation strategy for [SITUATION: salary/job offer/business deal/vendor contract]. My position: [YOUR_POSITION]. Their position: [THEIR_POSITION]. Provide: 1) BATNA analysis (Best Alternative To Negotiated Agreement) for both sides, 2) ZOPA estimation (Zone of Possible Agreement), 3) Opening strategy and anchoring plan, 4) Key arguments with supporting data, 5) Concession plan (what to give, in what order, and what to get in return), 6) Questions to ask to uncover their interests, 7) Deadlock-breaking tactics, 8) Closing strategy. Include specific phrases and scripts to use.",
+    "prompt_cn": "你是一位哈佛法学院培训的谈判专家。为[场景：薪资/工作offer/商业交易/供应商合同]制定谈判策略。我方立场：[你的立场]。对方立场：[对方立场]。提供：1) 双方BATNA分析（谈判协议的最佳替代方案），2) ZOPA预估（可能达成协议的区域），3) 开场策略和锚定计划，4) 核心论点及支撑数据，5) 让步计划（让什么、按什么顺序、换回什么），6) 挖掘对方利益的问题清单，7) 打破僵局的策略，8) 收尾策略。包含可使用的具体话术和脚本。",
+    "example_usage": "Plan a salary negotiation for a senior engineer role at a Series C startup, current salary $150K, targeting $200K + equity.",
+    "best_practices": "Be specific about the other party and their likely constraints. Share any prior interactions.",
+    "temperature": 0.6,
+    "version": "1.0",
+    "created": "2026-08-01"
+  },
+  {
+    "id": "business-006",
+    "title": "OKR & Goal Setting Framework",
+    "title_cn": "OKR与目标设定框架",
+    "subcategory": "management",
+    "tags": [
+      "okr",
+      "goal",
+      "kpi"
+    ],
+    "difficulty": "beginner",
+    "model_compatibility": [
+      "chatgpt",
+      "claude",
+      "gemini",
+      "deepseek"
+    ],
+    "description": "Create well-structured OKRs with measurable key results, aligned initiatives, and progress tracking.",
+    "description_cn": "创建结构良好的OKR，包含可衡量的关键结果、对齐的行动计划和进度跟踪。",
+    "prompt": "You are an OKR coach who has implemented the framework at companies like Google. Help define OKRs for [TEAM/COMPANY] for [QUARTER/YEAR]. Context: [CONTEXT - goals, challenges, current state]. Provide: 1) 3-5 Objectives (qualitative, inspirational, memorable), 2) 3-5 Key Results per Objective (quantitative, measurable, with baseline and target), 3) Initiatives/projects to achieve each KR, 4) Dependencies and cross-team alignment needs, 5) Health metrics (leading indicators to track weekly), 6) Confidence scoring framework (0-10 scale). Ensure OKRs are ambitious but achievable (aim for 70% achievement rate).",
+    "prompt_cn": "你是一位曾在Google等公司实施OKR框架的OKR教练。帮助[团队/公司]为[季度/年度]定义OKR。背景：[背景 - 目标、挑战、现状]。提供：1) 3-5个目标（定性、激励人心、易记），2) 每个目标3-5个关键结果（定量、可衡量、带基线和目标值），3) 实现每个KR的行动计划/项目，4) 依赖关系和跨团队对齐需求，5) 健康指标（每周跟踪的前瞻性指标），6) 信心评分框架（0-10分制）。确保OKR有野心但可实现（目标70%达成率）。",
+    "example_usage": "Define Q3 OKRs for a 10-person engineering team building a mobile app, aiming to improve app stability and user retention.",
+    "best_practices": "Share past quarter performance data. Mention company-level OKRs for alignment.",
+    "temperature": 0.5,
+    "version": "1.0",
+    "created": "2026-08-01"
+  }
+]
