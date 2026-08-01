@@ -13,6 +13,7 @@ AIGC:
 
 > 75+ 结构化实战提示词，覆盖 11 大分类。多模型兼容。中英双语。JSON + 网页搜索。
 
+[![在线体验](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-Live%20Demo-58a6ff?style=for-the-badge)](https://cianlaw.github.io/prompt-vault/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Prompts](https://img.shields.io/badge/Prompts-75%2B-blue)]()
 [![Categories](https://img.shields.io/badge/Categories-11-orange)]()

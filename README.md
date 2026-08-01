@@ -13,6 +13,7 @@ AIGC:
 
 > 75+ structured, battle-tested prompts across 11 categories. Multi-model. Bilingual EN/ZH. JSON + Web Search.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-58a6ff?style=for-the-badge)](https://cianlaw.github.io/prompt-vault/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Prompts](https://img.shields.io/badge/Prompts-75%2B-blue)]()
 [![Categories](https://img.shields.io/badge/Categories-11-orange)]()
