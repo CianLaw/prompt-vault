@@ -10,61 +10,71 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-text-size-adjust: 100%; }
 header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 18px 20px; text-align: center; position: relative; }
 header h1 { font-size: 24px; font-weight: 700; color: var(--accent); margin: 0 0 2px; }
-header .sub { color: var(--muted); font-size: 12px; }
+header .sub { color: var(--muted); font-size: 12px; transition: color .3s; }
 
 .lang-switch { display: flex; justify-content: center; gap: 4px; margin-top: 10px; }
-.lang-switch button { background: #21262d; border: 1px solid var(--border); color: var(--muted); font-size: 12px; padding: 4px 16px; border-radius: 6px; cursor: pointer; font-family: inherit; }
+.lang-switch button { background: #21262d; border: 1px solid var(--border); color: var(--muted); font-size: 12px; padding: 4px 16px; border-radius: 6px; cursor: pointer; font-family: inherit; transition: all .3s ease; }
 .lang-switch button.active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); font-weight: 600; }
 
 .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
 
-/* Search */
 .search-box { margin: 16px 0; }
-.search-box input { width: 100%; padding: 12px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 15px; outline: none; transition: border-color .2s; }
+.search-box input { width: 100%; padding: 12px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 15px; outline: none; transition: border-color .3s; }
 .search-box input:focus { border-color: var(--accent); }
 
-/* Filters row */
 .filters-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
 .filter-dropdown { flex: 1; min-width: 110px; position: relative; }
-.filter-btn { width: 100%; padding: 10px 12px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
-.filter-btn::after { content: ''; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--muted); margin-left: 6px; flex-shrink: 0; }
+.filter-btn { width: 100%; padding: 10px 12px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 13px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: border-color .3s, background .3s; }
+.filter-btn::after { content: ''; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--muted); margin-left: 6px; flex-shrink: 0; transition: transform .3s; }
+.filter-btn.open::after { transform: rotate(180deg); }
 .filter-btn:focus { outline: none; border-color: var(--accent); }
 .filter-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; z-index: 100; max-height: 220px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
-.filter-menu.open { display: block; }
-.filter-menu .opt { padding: 10px 14px; font-size: 13px; color: var(--text); cursor: pointer; border-bottom: 1px solid var(--border); }
+.filter-menu.open { display: block; animation: fadeDown .2s ease; }
+.filter-menu .opt { padding: 10px 14px; font-size: 13px; color: var(--text); cursor: pointer; border-bottom: 1px solid var(--border); transition: background .2s, color .2s; }
 .filter-menu .opt:last-child { border-bottom: none; }
 .filter-menu .opt:hover { background: var(--accent-bg); }
 .filter-menu .opt.selected { color: var(--accent); font-weight: 600; }
 
-/* Tags */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
 .tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all .15s; }
-.tag:hover { border-color: var(--accent); color: var(--accent); }
-.tag.active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+.tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid var(--border); color: var(--muted); cursor: pointer; transition: all .3s ease; background: linear-gradient(135deg, transparent 0%, transparent 100%); }
+.tag:hover { border-color: var(--accent); color: var(--accent); background: linear-gradient(135deg, #1f6feb18 0%, #58a6ff10 100%); }
+.tag.active { background: linear-gradient(135deg, #1f6feb30 0%, #58a6ff20 100%); border-color: var(--accent-border); color: var(--accent); }
 
-/* Results */
-.result-summary { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.result-summary { color: var(--muted); font-size: 12px; margin-bottom: 12px; transition: color .3s; }
 
-.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; transition: border-color .2s; }
-.card:hover { border-color: var(--accent); }
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 10px; transition: border-color .3s, box-shadow .3s; animation: fadeUp .35s ease both; }
+.card:nth-child(1) { animation-delay: 0s; }
+.card:nth-child(2) { animation-delay: .04s; }
+.card:nth-child(3) { animation-delay: .08s; }
+.card:nth-child(4) { animation-delay: .12s; }
+.card:nth-child(5) { animation-delay: .16s; }
+.card:nth-child(6) { animation-delay: .2s; }
+.card:nth-child(7) { animation-delay: .24s; }
+.card:nth-child(8) { animation-delay: .28s; }
+.card:nth-child(9) { animation-delay: .32s; }
+.card:nth-child(10) { animation-delay: .36s; }
+.card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(88,166,255,.08); }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
 .card-id { color: var(--muted); font-size: 10px; font-family: monospace; }
 .card-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
 .card-title-cn { font-size: 13px; color: var(--muted); }
 .card-desc { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
 .card-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 10px; }
-.card-meta span { padding: 2px 8px; border-radius: 4px; background: #21262d; border: 1px solid var(--border); }
+.card-meta span { padding: 2px 8px; border-radius: 4px; background: #21262d; border: 1px solid var(--border); transition: background .3s, border-color .3s, color .3s; }
 .card-meta span.model-tag { background: var(--accent-bg); border-color: var(--accent-border); }
 .card-meta span.diff-tag { background: #2ea04322; border-color: #2ea04344; color: #3fb950; }
-.expand-btn { background: none; border: 1px solid var(--border); color: var(--accent); padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: inherit; }
-.expand-btn:hover { background: var(--accent-bg); }
+.expand-btn { background: none; border: 1px solid var(--border); color: var(--accent); padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: inherit; transition: all .3s; }
+.expand-btn:hover { background: var(--accent-bg); border-color: var(--accent); }
 
 .card-body { display: none; margin-top: 10px; }
-.card-body.show { display: block; }
+.card-body.show { display: block; animation: fadeDown .25s ease; }
 .tab-row { display: flex; gap: 4px; margin-bottom: 4px; align-items: center; }
-.lang-tab { padding: 4px 10px; border-radius: 6px 6px 0 0; font-size: 11px; cursor: pointer; border: 1px solid var(--border); border-bottom: none; background: #0d1117; color: var(--muted); }
+.lang-tab { padding: 4px 10px; border-radius: 6px 6px 0 0; font-size: 11px; cursor: pointer; border: 1px solid var(--border); border-bottom: none; background: #0d1117; color: var(--muted); transition: all .2s; }
 .lang-tab.active { background: var(--card-bg); color: var(--accent); border-color: var(--accent) var(--border) var(--card-bg); }
-.copy-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 3px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; margin-left: auto; font-family: inherit; }
+.copy-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 3px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; margin-left: auto; font-family: inherit; transition: all .3s; }
 .copy-btn:hover { color: var(--text); border-color: var(--accent); }
 .card-body pre { background: #0d1117; border: 1px solid var(--border); border-radius: 0 6px 6px 6px; padding: 12px; font-size: 11px; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; word-break: break-word; color: var(--text); }
 
@@ -131,6 +141,55 @@ const DIFF_LABEL = {
     advanced: {zh:'高级',en:'Advanced'}
 };
 
+const TAG_LABEL = {
+    '5-whys':{zh:'5问法'}, 'ab-test':{zh:'AB测试'}, 'academic':{zh:'学术'}, 'action-items':{zh:'行动项'},
+    'ad':{zh:'广告'}, 'ads':{zh:'广告'}, 'ai-video':{zh:'AI视频'}, 'album':{zh:'相册'}, 'analysis':{zh:'分析'},
+    'animation':{zh:'动画'}, 'api':{zh:'API'}, 'architecture':{zh:'架构'}, 'argument':{zh:'论证'},
+    'art':{zh:'艺术'}, 'automation':{zh:'自动化'}, 'best-practices':{zh:'最佳实践'}, 'blog':{zh:'博客'},
+    'brainstorm':{zh:'头脑风暴'}, 'brand':{zh:'品牌'}, 'brief':{zh:'简报'}, 'business-plan':{zh:'商业计划'},
+    'career':{zh:'职业'}, 'character':{zh:'角色'}, 'code':{zh:'代码'}, 'communication':{zh:'沟通'},
+    'comparison':{zh:'对比'}, 'competitor':{zh:'竞品'}, 'concept':{zh:'概念'}, 'concept-art':{zh:'概念设计'},
+    'content-calendar':{zh:'内容日历'}, 'content-cluster':{zh:'内容集群'}, 'contract':{zh:'合同'},
+    'conversation':{zh:'对话'}, 'conversion':{zh:'转化'}, 'copy':{zh:'文案'}, 'copywriting':{zh:'文案写作'},
+    'counseling':{zh:'咨询'}, 'course':{zh:'课程'}, 'creative-writing':{zh:'创意写作'},
+    'creativity':{zh:'创造力'}, 'critical-thinking':{zh:'批判思维'}, 'cro':{zh:'转化优化'}, 'curriculum':{zh:'课程大纲'},
+    'dalle':{zh:'DALL-E'}, 'data':{zh:'数据'}, 'database':{zh:'数据库'}, 'deal':{zh:'交易'},
+    'debate':{zh:'辩论'}, 'debug':{zh:'调试'}, 'decision':{zh:'决策'}, 'design':{zh:'设计'},
+    'dnd':{zh:'龙与地下城'}, 'docs':{zh:'文档'}, 'drip':{zh:'滴灌营销'}, 'ell5':{zh:'通俗解释'},
+    'email':{zh:'邮件'}, 'engagement':{zh:'互动'}, 'exam':{zh:'考试'}, 'explain':{zh:'解释'},
+    'explainer':{zh:'解说'}, 'fantasy':{zh:'奇幻'}, 'fashion':{zh:'时尚'}, 'fiction':{zh:'小说'},
+    'figure':{zh:'数据图'}, 'finance':{zh:'金融'}, 'fix':{zh:'修复'}, 'flashcards':{zh:'闪卡'},
+    'forecast':{zh:'预测'}, 'framework':{zh:'框架'}, 'fundraising':{zh:'融资'}, 'game':{zh:'游戏'},
+    'generation':{zh:'生成'}, 'goal':{zh:'目标'}, 'growth':{zh:'增长'}, 'gtm':{zh:'市场进入'},
+    'history':{zh:'历史'}, 'ideas':{zh:'创意'}, 'identify':{zh:'识别'}, 'image-gen':{zh:'图像生成'},
+    'immersion':{zh:'沉浸'}, 'interior':{zh:'室内设计'}, 'interview':{zh:'面试'}, 'investor':{zh:'投资人'},
+    'job':{zh:'求职'}, 'kpi':{zh:'KPI'}, 'landing-page':{zh:'落地页'}, 'language':{zh:'语言'},
+    'launch':{zh:'发布'}, 'learning':{zh:'学习'}, 'legal':{zh:'法律'}, 'logo':{zh:'Logo'},
+    'long-form':{zh:'长文'}, 'management':{zh:'管理'}, 'market':{zh:'市场'}, 'marketing':{zh:'营销'},
+    'mechanics':{zh:'机制'}, 'media':{zh:'媒体'}, 'meeting':{zh:'会议'}, 'meme':{zh:'梗图'},
+    'memorization':{zh:'记忆'}, 'mental-health':{zh:'心理健康'}, 'metadata':{zh:'元数据'},
+    'microcopy':{zh:'微文案'}, 'midjourney':{zh:'Midjourney'}, 'modeling':{zh:'建模'}, 'music':{zh:'音乐'},
+    'naming':{zh:'命名'}, 'negotiation':{zh:'谈判'}, 'newsletter':{zh:'简报'}, 'nlp':{zh:'NLP'},
+    'notes':{zh:'笔记'}, 'okr':{zh:'OKR'}, 'optimization':{zh:'优化'}, 'organization':{zh:'组织'},
+    'paper':{zh:'论文'}, 'pattern':{zh:'模式'}, 'photography':{zh:'摄影'}, 'pika':{zh:'Pika'},
+    'pillar-page':{zh:'支柱页'}, 'pitch':{zh:'路演'}, 'plm':{zh:'产品生命周期'}, 'pr':{zh:'公关'},
+    'practice':{zh:'练习'}, 'prd':{zh:'PRD'}, 'preparation':{zh:'准备'}, 'press-release':{zh:'新闻稿'},
+    'problem':{zh:'问题'}, 'product':{zh:'产品'}, 'professional':{zh:'专业'}, 'project':{zh:'项目'},
+    'prompt-engineering':{zh:'提示词工程'}, 'quality':{zh:'质量'}, 'quiz':{zh:'测验'}, 'reels':{zh:'短视频'},
+    'regex':{zh:'正则'}, 'render':{zh:'渲染'}, 'report':{zh:'报告'}, 'requirements':{zh:'需求'},
+    'research':{zh:'研究'}, 'review':{zh:'评审'}, 'reviews':{zh:'评价'}, 'risk':{zh:'风险'},
+    'roleplay':{zh:'角色扮演'}, 'root-cause':{zh:'根因'}, 'rpg':{zh:'RPG'}, 'runway':{zh:'Runway'},
+    'sales':{zh:'销售'}, 'scalability':{zh:'可扩展性'}, 'script':{zh:'脚本'}, 'sentiment':{zh:'情感'},
+    'seo':{zh:'SEO'}, 'shorts':{zh:'短视频'}, 'simple':{zh:'简单'}, 'social':{zh:'社交'},
+    'social-media':{zh:'社交媒体'}, 'socratic':{zh:'苏格拉底'}, 'sora':{zh:'Sora'}, 'spec':{zh:'规格'},
+    'sql':{zh:'SQL'}, 'stable-diffusion':{zh:'Stable Diffusion'}, 'startup':{zh:'创业'}, 'story':{zh:'故事'}
+};
+
+function tagLabel(tag) {
+    if (lang === 'zh' && TAG_LABEL[tag]) return TAG_LABEL[tag].zh;
+    return tag;
+}
+
 const I18N = {
     zh: { search:'搜索提示词（如：写作、营销、GPT-4）', catAll:'全部分类', diffAll:'全部难度', modelAll:'全部模型',
         show:'展开', hide:'收起', copyEn:'复制 EN', copyCn:'复制 中文', copied:'已复制!',
@@ -149,8 +208,8 @@ async function load() {
             let data = await r.json();
             data.forEach(p => {
                 p.category = cat;
-                p.tags.forEach(tg => allTags.add(tg));
-                p.model_compatibility.forEach(m => allModels.add(m));
+                (p.tags||[]).forEach(tg => allTags.add(tg));
+                (p.model_compatibility||[]).forEach(m => allModels.add(m));
             });
             allPrompts.push(...data);
         } catch(e) { console.warn('Load fail:', cat); }
@@ -162,24 +221,19 @@ async function load() {
 
 // ======= BUILD UI =======
 function buildUI() {
-    // Header stat
     document.getElementById('header-stat').textContent = t('header', {n: allPrompts.length});
     document.getElementById('footer-text').textContent = allPrompts.length + '+ prompts';
     document.getElementById('search').placeholder = t('search');
 
-    // Cat dropdown
     buildDropdown('dd-cat', 'cat', CATS.map(c => ({val:c, label_zh:CAT_LABEL[c].zh, label_en:CAT_LABEL[c].en})));
-    // Diff dropdown
     buildDropdown('dd-diff', 'diff', DIFF_KEYS.map(d => ({val:d, label_zh:DIFF_LABEL[d].zh, label_en:DIFF_LABEL[d].en})));
-    // Model dropdown
     buildDropdown('dd-model', 'model', [...allModels].sort().map(m => ({val:m, label_zh:m, label_en:m})));
 
-    // Tags
     let tagRow = document.getElementById('tags-row');
     tagRow.innerHTML = '';
     [...allTags].sort().forEach(tg => {
         let s = document.createElement('span');
-        s.className = 'tag'; s.textContent = tg;
+        s.className = 'tag'; s.textContent = tagLabel(tg); s.dataset.raw = tg;
         s.onclick = function() { this.classList.toggle('active'); render(); };
         tagRow.appendChild(s);
     });
@@ -187,15 +241,17 @@ function buildUI() {
 
 function buildDropdown(id, key, items) {
     let wrap = document.getElementById(id);
-    let allLabel = key === 'cat' ? 'catAll' : (key === 'diff' ? 'diffAll' : 'modelAll');
-    let opts = [{val:'all', label_zh:t.call({lang:'zh'}, allLabel), label_en:t.call({lang:'en'}, allLabel)}, ...items];
+    let allKey = key === 'cat' ? 'catAll' : (key === 'diff' ? 'diffAll' : 'modelAll');
+    let allZh = I18N.zh[allKey];
+    let allEn = I18N.en[allKey];
+    let opts = [{val:'all', label_zh:allZh, label_en:allEn}, ...items];
 
     wrap.innerHTML = '';
     wrap.dataset.key = key;
 
     let btn = document.createElement('button');
     btn.className = 'filter-btn';
-    btn.textContent = opts[0][lang === 'zh' ? 'label_zh' : 'label_en'];
+    btn.textContent = allZh;
     btn.dataset.value = 'all';
     btn.onclick = function(e) { e.stopPropagation(); toggleMenu(wrap); };
 
@@ -205,12 +261,9 @@ function buildDropdown(id, key, items) {
     opts.forEach((o, i) => {
         let div = document.createElement('div');
         div.className = 'opt' + (i === 0 ? ' selected' : '');
-        div.textContent = lang === 'zh' ? o.label_zh : o.label_en;
+        div.textContent = o.label_zh;
         div.dataset.value = o.val;
-        div.onclick = function(e) {
-            e.stopPropagation();
-            selectOption(wrap, this, o);
-        };
+        div.onclick = function(e) { e.stopPropagation(); selectOption(wrap, this, o); };
         menu.appendChild(div);
     });
 
@@ -219,11 +272,15 @@ function buildDropdown(id, key, items) {
 }
 
 function toggleMenu(wrap) {
-    let open = wrap.querySelector('.filter-menu.open');
-    if (open) { open.classList.remove('open'); return; }
-    // Close all others
+    let btn = wrap.querySelector('.filter-btn');
+    let menu = wrap.querySelector('.filter-menu');
+    let wasOpen = menu.classList.contains('open');
     document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
-    wrap.querySelector('.filter-menu').classList.add('open');
+    document.querySelectorAll('.filter-btn.open').forEach(b => b.classList.remove('open'));
+    if (!wasOpen) {
+        menu.classList.add('open');
+        btn.classList.add('open');
+    }
 }
 
 function selectOption(wrap, optEl, optData) {
@@ -233,12 +290,13 @@ function selectOption(wrap, optEl, optData) {
     wrap.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
     optEl.classList.add('selected');
     wrap.querySelector('.filter-menu').classList.remove('open');
+    btn.classList.remove('open');
     render();
 }
 
-// Close menus on outside click
-document.addEventListener('click', function() {
+document.addEventListener('click', function(e) {
     document.querySelectorAll('.filter-menu.open').forEach(m => m.classList.remove('open'));
+    document.querySelectorAll('.filter-btn.open').forEach(b => b.classList.remove('open'));
 });
 
 // ======= SET LANGUAGE =======
@@ -248,29 +306,29 @@ function setLang(l) {
     document.getElementById('len').classList.toggle('active', l === 'en');
     document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
 
-    // Update dropdown button labels
+    // Update dropdown buttons & options
     ['dd-cat','dd-diff','dd-model'].forEach(id => {
         let wrap = document.getElementById(id);
         let btn = wrap.querySelector('.filter-btn');
         let val = btn.dataset.value;
+        let key = wrap.dataset.key;
         wrap.querySelectorAll('.opt').forEach(opt => {
-            // Re-label based on stored data
             let oVal = opt.dataset.value;
-            let key = wrap.dataset.key;
+            let label;
             if (key === 'cat') {
-                let label = oVal === 'all' ? t('catAll') : CAT_LABEL[oVal][lang];
-                opt.textContent = label;
-                if (val === oVal) btn.textContent = label;
+                label = oVal === 'all' ? t('catAll') : CAT_LABEL[oVal][lang];
             } else if (key === 'diff') {
-                let label = oVal === 'all' ? t('diffAll') : DIFF_LABEL[oVal][lang];
-                opt.textContent = label;
-                if (val === oVal) btn.textContent = label;
+                label = oVal === 'all' ? t('diffAll') : DIFF_LABEL[oVal][lang];
             } else {
-                opt.textContent = oVal; // model names stay same
-                if (val === oVal) btn.textContent = oVal;
+                label = oVal === 'all' ? t('modelAll') : oVal;
             }
+            opt.textContent = label;
+            if (val === oVal) btn.textContent = label;
         });
     });
+
+    // Update tags
+    document.querySelectorAll('.tag').forEach(el => el.textContent = tagLabel(el.dataset.raw));
 
     document.getElementById('header-stat').textContent = t('header', {n: allPrompts.length});
     document.getElementById('search').placeholder = t('search');
@@ -283,41 +341,41 @@ function render() {
     let cat = document.getElementById('dd-cat').querySelector('.filter-btn').dataset.value;
     let diff = document.getElementById('dd-diff').querySelector('.filter-btn').dataset.value;
     let model = document.getElementById('dd-model').querySelector('.filter-btn').dataset.value;
-    let activeTags = [...document.querySelectorAll('.tag.active')].map(e => e.textContent);
+    let activeTags = [...document.querySelectorAll('.tag.active')].map(e => e.dataset.raw);
 
     let list = allPrompts;
     if (cat !== 'all') list = list.filter(p => p.category === cat);
     if (diff !== 'all') list = list.filter(p => p.difficulty === diff);
-    if (model !== 'all') list = list.filter(p => p.model_compatibility.includes(model));
+    if (model !== 'all') list = list.filter(p => (p.model_compatibility||[]).includes(model));
     if (q) {
         list = list.filter(p =>
-            (p.title || '').toLowerCase().includes(q) ||
-            (p.title_cn || '').includes(q) ||
-            (p.description || '').toLowerCase().includes(q) ||
-            (p.description_cn || '').includes(q) ||
-            (p.tags || []).some(tg => tg.toLowerCase().includes(q)) ||
-            (p.id || '').includes(q) ||
-            (p.prompt || '').toLowerCase().includes(q) ||
-            (p.prompt_cn || '').includes(q)
+            (p.title||'').toLowerCase().includes(q) ||
+            (p.title_cn||'').includes(q) ||
+            (p.description||'').toLowerCase().includes(q) ||
+            (p.description_cn||'').includes(q) ||
+            (p.tags||[]).some(tg => tg.toLowerCase().includes(q) || (TAG_LABEL[tg]&&TAG_LABEL[tg].zh.includes(q))) ||
+            (p.id||'').includes(q) ||
+            (p.prompt||'').toLowerCase().includes(q) ||
+            (p.prompt_cn||'').includes(q)
         );
     }
-    if (activeTags.length) list = list.filter(p => activeTags.every(tg => (p.tags || []).includes(tg)));
+    if (activeTags.length) list = list.filter(p => activeTags.every(tg => (p.tags||[]).includes(tg)));
 
     document.getElementById('summary').textContent = t('results', {n: list.length});
 
-    let cardsHtml = list.map(p => {
+    let cardsHtml = list.map((p,i) => {
         let desc = lang === 'zh' ? (p.description_cn || p.description) : (p.description || p.description_cn);
         let diffLabel = lang === 'zh' ? DIFF_LABEL[p.difficulty].zh : p.difficulty;
-        return `<div class="card">
+        return `<div class="card" style="animation-delay:${i*0.04}s">
     <div class="card-top">
-        <div><span class="card-id">${p.id}</span> <span class="card-title">${p.title}</span> <span class="card-title-cn">${p.title_cn || ''}</span></div>
+        <div><span class="card-id">${p.id}</span> <span class="card-title">${p.title}</span> <span class="card-title-cn">${p.title_cn||''}</span></div>
         <div style="display:flex;align-items:center;gap:8px;">
             <span class="diff-tag" style="font-size:11px;padding:2px 8px;border-radius:4px;">${diffLabel}</span>
             <button class="expand-btn" onclick="toggleCard('${p.id}')">${t('show')}</button>
         </div>
     </div>
     <div class="card-desc">${desc}</div>
-    <div class="card-meta">${(p.tags||[]).map(tg=>`<span>${tg}</span>`).join('')}${(p.model_compatibility||[]).map(m=>`<span class="model-tag">${m}</span>`).join('')}</div>
+    <div class="card-meta">${(p.tags||[]).map(tg=>`<span>${tagLabel(tg)}</span>`).join('')}${(p.model_compatibility||[]).map(m=>`<span class="model-tag">${m}</span>`).join('')}</div>
     <div class="card-body" id="body-${p.id}">
         <div class="tab-row">
             <span class="lang-tab active" onclick="switchTab(this,'en','${p.id}')">EN</span>
@@ -325,7 +383,7 @@ function render() {
             <button class="copy-btn" onclick="copyPrompt('${p.id}','en',this)">${t('copyEn')}</button>
             <button class="copy-btn" onclick="copyPrompt('${p.id}','cn',this)">${t('copyCn')}</button>
         </div>
-        <pre id="pre-${p.id}">${esc(p.prompt || '')}</pre>
+        <pre id="pre-${p.id}">${esc(p.prompt||'')}</pre>
     </div>
 </div>`;
     }).join('');
@@ -341,8 +399,7 @@ function toggleCard(id) {
 }
 
 function switchTab(tab, which, id) {
-    let row = tab.parentElement;
-    row.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    tab.parentElement.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     let p = allPrompts.find(x => x.id === id);
     document.getElementById('pre-' + id).textContent = (which === 'en' ? p.prompt : p.prompt_cn) || '';
@@ -360,7 +417,6 @@ function copyPrompt(id, which, btn) {
 
 function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-// ======= START =======
 load();
 </script>
 </body>
